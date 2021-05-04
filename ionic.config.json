@@ -1,0 +1,8 @@
+{
+  "name": "Homemate",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "1747e1e8"
+}
