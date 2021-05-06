@@ -15,12 +15,24 @@ const routes: Routes = [
     loadChildren: () => import('./verify-email/verify-email.module').then( m => m.VerifyEmailPageModule)
   },
   {
-    path: '',
+    path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./test-person/test-person.module').then( m => m.TestPersonPageModule)
+  },
+  {
+    path: 'test-list-person',
+    loadChildren: () => import('./test-list-person/test-list-person.module').then( m => m.TestListPersonPageModule)
+  },
+  {
+    path: 'test-update-person/:id',
+    loadChildren: () => import('./test-update-person/test-update-person.module').then( m => m.TestUpdatePersonPageModule)
   }
 ];
 @NgModule({

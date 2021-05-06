@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Person List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let person of persons" lines="full">
+      <ion-label>
+        <strong>{{person.firstname}}</strong>
+        <p>{{person.lastname}}</p>
+        <p>{{person.gender}}</p>
+        <p>{{person.birthdate}}</p>
+        <p>{{person.photo}}</p>
+      </ion-label>
+
+
+      
+      <div item-end>
+        <button [routerLink]="['/test-update-person/', person.id]">
+          <ion-icon name="create" style="zoom:1.5"></ion-icon>
+        </button>
+        <button (click)="remove(person.id)">
+          <ion-icon name="trash" style="zoom:1.5"></ion-icon>
+        </button>
+      </div>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
