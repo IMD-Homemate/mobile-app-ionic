@@ -1,0 +1,91 @@
+<ion-content [fullscreen]="true">
+
+  <ion-toolbar color="lightblue">
+        <!-- Link naar rond deze icon, wat voor soort link? -->
+        <ion-row class="ion-padding-horizontal ion-padding-vertical">
+
+          <ion-col>
+            <ion-icon name="home" size="large" color="darkblue"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-text color="darkblue" id="caps">preferences</ion-text>
+          </ion-col>
+          <ion-col>
+            <div class="ion-text-end">
+              <ion-icon name="person" size="large" color="darkblue"></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+  </ion-toolbar>
+
+  <ion-grid>
+    <ion-row center>
+      <ion-col size="12">
+
+          <ion-card-header>
+          </ion-card-header>
+
+          <ion-card-content class="bg-color ion-padding-vertical to-bottom2">
+
+            <ion-text color="grey" class="ion-padding-vertical">
+              <p class="ion-padding-horizontal  ion-padding-vertical bold">Your interests:</p>
+            </ion-text>
+            <ion-searchbar color="lightblue"></ion-searchbar>
+
+            <ion-grid>
+              <ion-row>
+                <ion-col><ion-button shape="round" class="interest selected">Sports</ion-button></ion-col>
+                <ion-col><ion-button shape="round" class="interest not-selected" color="white">Gaming</ion-button></ion-col>
+                <ion-col><ion-button shape="round" class="interest selected">Hiking</ion-button></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col><ion-button shape="round" class="interest selected">Music</ion-button></ion-col>
+                <ion-col><ion-button shape="round" class="interest not-selected" color="white">Films</ion-button></ion-col>
+                <ion-col><ion-button shape="round" class="interest selected">Food</ion-button></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col><ion-button shape="round" class="interest selected">Netflix</ion-button></ion-col>
+                <ion-col><ion-button shape="round" class="interest not-selected" color="white">Running</ion-button></ion-col>
+                <ion-col><ion-button shape="round" class="interest selected">Vegan</ion-button></ion-col>
+              </ion-row>
+            </ion-grid>
+
+            <ion-text color="grey" class="ion-padding-vertical">
+              <p class="ion-padding-horizontal ion-padding-vertical bold">I find this important:</p>
+            </ion-text>
+
+            <ion-row>
+              <ion-col>
+                <ion-row class="ion-padding-vertical"><ion-checkbox></ion-checkbox><p>A tidy house</p></ion-row>
+                <ion-row><ion-checkbox>Healthy food</ion-checkbox></ion-row>
+                <ion-row class="ion-padding-vertical"><ion-checkbox>Higher education</ion-checkbox></ion-row>
+                <ion-row><ion-checkbox>Making clear agreements</ion-checkbox></ion-row>
+                <ion-row class="ion-padding-vertical"><ion-checkbox>Private bathroom</ion-checkbox></ion-row>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="ion-margin-vertical">
+              <ion-col>
+                <div class="ion-text-start">
+                  <ion-button color="white" class="ion-padding-vertical">
+                    <ion-text color="grey">
+                      <p color="grey">Back</p>
+                    </ion-text>
+                  </ion-button>
+                </div>
+              </ion-col>
+
+              <ion-col>
+                <div class="ion-text-end">
+                  <ion-button shape="round" class="btn-small" color="light-lightblue"><p>Next</p></ion-button>
+                </div>
+              </ion-col>
+            </ion-row>
+
+          </ion-card-content>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
