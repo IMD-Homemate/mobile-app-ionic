@@ -2,6 +2,26 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  // },
+  {
+    path: 'registration',
+    loadChildren: () => import('./registration/registration.module').then( m => m.RegistrationPageModule)
+  },
+  {
+    path: 'verify-email',
+    loadChildren: () => import('./verify-email/verify-email.module').then( m => m.VerifyEmailPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login-bart/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
   {
     path: 'makeaccount1',
     loadChildren: () => import('./makeaccount1/makeaccount1.module').then( m => m.Makeaccount1PageModule)
@@ -49,6 +69,18 @@ const routes: Routes = [
   {
     path: 'login-input',
     loadChildren: () => import('./login-input/login-input.module').then( m => m.LoginInputPageModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./test-person/test-person.module').then( m => m.TestPersonPageModule)
+  },
+  {
+    path: 'test-list-person',
+    loadChildren: () => import('./test-list-person/test-list-person.module').then( m => m.TestListPersonPageModule)
+  },
+  {
+    path: 'test-update-person/:id',
+    loadChildren: () => import('./test-update-person/test-update-person.module').then( m => m.TestUpdatePersonPageModule)
   }
 ];
 @NgModule({
