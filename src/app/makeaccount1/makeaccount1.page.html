@@ -1,11 +1,9 @@
-
-
 <ion-content [fullscreen]="true">
 
 
   <ion-toolbar color="lightblue">
         <!-- Link naar rond deze icon, wat voor soort link? -->
-        <ion-icon name="close-outline" class="icon-back" size="large" color="darkblue"></ion-icon>
+          <ion-icon name="close-outline" class="icon-back" size="large" color="darkblue" [routerLink]="['/signup']"></ion-icon>
   </ion-toolbar>
 
 <ion-grid>
@@ -44,12 +42,14 @@
             <ion-col>
               <div class="ion-text-start">
                 <ion-button color="white" class="ion-padding-vertical">
-                  <ion-text color="grey">
+                  <ion-text color="grey" [routerLink]="['/signup']">
                     <p color="grey">Back</p>
                   </ion-text>
                 </ion-button>
               </div>
             </ion-col>
+
+              <!-- <ion-button [routerLink]="['/makeaccount2']">Go to detail</ion-button> -->
 
             <ion-col>
               <div class="ion-text-end">
@@ -59,7 +59,7 @@
           </ion-row>
 
             <ion-text color="grey" center>
-              <p class="p-dont">Already have an account? Log in.</p>
+              <p class="p-dont" [routerLink]="['/login']">Already have an account? Log in.</p>
             </ion-text>
         </ion-card-content>
 

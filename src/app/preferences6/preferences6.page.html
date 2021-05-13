@@ -27,8 +27,15 @@
           <ion-card-header>
           </ion-card-header>
 
-          <ion-card-content class="bg-color ion-padding-vertical to-bottom2">
+          <ion-card-content class="bg-color ion-padding-vertical">
 
+            <ion-text color="grey" class="ion-padding-vertical ion-padding-horizontal ion-text-center">
+              <h1 class="ion-padding-horizontal ion-text-start">About your cohousing situation</h1>
+            </ion-text>
+
+            <!-- SHOW WHEN SEEKER -->
+
+          <div>
             <ion-text color="grey" class="ion-padding-vertical">
               <p class="ion-padding-horizontal  ion-padding-vertical bold">Tell something more about yourself!</p>
             </ion-text>
@@ -38,16 +45,40 @@
               </p>
             </ion-text>
 
-            <ion-item class="ion-padding-vertical">
-              <ion-textarea></ion-textarea>
+            <ion-item class="ion-padding-vertical" color="white border-txt" >
+              <ion-textarea color="grey"></ion-textarea>
+            </ion-item>
+          </div>
+            <!-- SHOW WHEN OFFERER -->
+          <div>
+            <ion-text color="grey" class="ion-padding-vertical">
+              <p class="ion-padding-horizontal  ion-padding-vertical bold">Tell something more about your cohousing situation!</p>
+            </ion-text>
+            <ion-text color="grey" class="ion-padding-vertical">
+              <p class="ion-padding-horizontal  ion-padding-vertical">
+                How many people are you? What do you like? What is important in your house?
+              </p>
+            </ion-text>
+
+            <ion-item class="ion-padding-vertical" color="white border-txt" >
+              <ion-textarea color="grey"></ion-textarea>
             </ion-item>
 
+            <ion-text color="grey" class="ion-padding-vertical">
+              <p class="ion-padding-horizontal ion-padding-vertical bold">Available from:</p>
+            </ion-text>
+            <ion-card color="white">
+              <ion-item id="test">
+                <ion-datetime displayFormat="D MMM YYYY" color="grey" max="2023"  min="2021" value="2021-06-17"></ion-datetime>
+              </ion-item>
+            </ion-card>
+          </div>
 
-            <ion-row class="ion-margin-vertical to-bottom">
+            <ion-row class="ion-margin-vertical">
               <ion-col>
                 <div class="ion-text-start">
                   <ion-button color="white" class="ion-padding-vertical">
-                    <ion-text color="grey">
+                    <ion-text color="grey" [routerLink]="['/preferences5']">
                       <p color="grey">Back</p>
                     </ion-text>
                   </ion-button>

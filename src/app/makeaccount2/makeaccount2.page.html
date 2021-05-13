@@ -3,7 +3,7 @@
 
   <ion-toolbar color="lightblue">
         <!-- Link naar rond deze icon, wat voor soort link? -->
-        <ion-icon name="close-outline" class="icon-back" size="large" color="darkblue"></ion-icon>
+        <ion-icon name="close-outline" class="icon-back" size="large" color="darkblue" [routerLink]="['/signup']"></ion-icon>
   </ion-toolbar>
 
 <ion-grid>
@@ -18,7 +18,7 @@
         </ion-card-header>
 
         <ion-card-content class="bg-color">
-          <form id="form-id">
+          <form>
             <ion-text color="grey">
               <p class="ion-padding-vertical ion-padding-horizontal ion-text-center">Leave your email here. You need it to log in
                 and to reset your password.</p>
@@ -30,13 +30,49 @@
                 </ion-input>
               </ion-item>
             </ion-card>
+
+            <ion-card>
+              <ion-item id="test">
+                <ion-label position="stacked" color="grey">Password</ion-label>
+                <ion-input type="password" color="grey">
+                </ion-input>
+              </ion-item>
+            </ion-card>
+
+            <ion-card>
+              <ion-item id="test">
+                <ion-label position="stacked" color="grey">Confirm Password</ion-label>
+                <ion-input type="password" color="grey"></ion-input>
+              </ion-item>
+            </ion-card>
+
           </form>
 
-          <ion-row class="ion-margin-vertical to-bottom">
+          <ion-row class="ion-padding-horizontal">
+            <ion-col>
+
+              <ion-text color="grey">
+                <ion-row>
+                  <ion-icon name="checkmark-circle-outline" size="medium" color="success"></ion-icon>
+                  <p class="ion-padding-horizontal">8 characters or more</p>
+                </ion-row>
+                <ion-row>
+                  <ion-icon name="close-circle-outline" color="danger"></ion-icon>
+                  <p class="ion-padding-horizontal">1 uppercase character</p>
+                </ion-row>
+                <ion-row>
+                  <ion-icon name="close-circle-outline" color="danger"></ion-icon>
+                  <p class="ion-padding-horizontal" color="danger">1 symbol or number</p>
+                </ion-row>
+              </ion-text>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-margin-vertical">
             <ion-col>
               <div class="ion-text-start">
                 <ion-button color="white" class="ion-padding-vertical">
-                  <ion-text color="grey">
+                  <ion-text color="grey" [routerLink]="['/makeaccount1']">
                     <p color="grey">Back</p>
                   </ion-text>
                 </ion-button>
@@ -51,7 +87,7 @@
           </ion-row>
 
             <ion-text color="grey" center>
-              <p class="p-dont">Already have an account? Log in.</p>
+              <p class="p-dont" [routerLink]="['/login']">Already have an account? Log in.</p>
             </ion-text>
         </ion-card-content>
 

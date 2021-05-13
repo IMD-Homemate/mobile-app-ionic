@@ -3,24 +3,12 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  },
-  {
-    path: 'signin-option',
-    loadChildren: () => import('./signin-option/signin-option.module').then( m => m.SigninOptionPageModule)
-  },
-  {
     path: 'makeaccount1',
     loadChildren: () => import('./makeaccount1/makeaccount1.module').then( m => m.Makeaccount1PageModule)
   },
   {
     path: 'makeaccount2',
     loadChildren: () => import('./makeaccount2/makeaccount2.module').then( m => m.Makeaccount2PageModule)
-  },
-  {
-    path: 'makeaccount3',
-    loadChildren: () => import('./makeaccount3/makeaccount3.module').then( m => m.Makeaccount3PageModule)
   },
   {
     path: 'makeaccount4',
@@ -39,14 +27,6 @@ const routes: Routes = [
     loadChildren: () => import('./preferences2/preferences2.module').then( m => m.Preferences2PageModule)
   },
   {
-    path: 'preferences3',
-    loadChildren: () => import('./preferences3/preferences3.module').then( m => m.Preferences3PageModule)
-  },
-  {
-    path: 'preferences4',
-    loadChildren: () => import('./preferences4/preferences4.module').then( m => m.Preferences4PageModule)
-  },
-  {
     path: 'preferences5',
     loadChildren: () => import('./preferences5/preferences5.module').then( m => m.Preferences5PageModule)
   },
@@ -55,8 +35,20 @@ const routes: Routes = [
     loadChildren: () => import('./preferences6/preferences6.module').then( m => m.Preferences6PageModule)
   },
   {
-    path: 'preferences7',
-    loadChildren: () => import('./preferences7/preferences7.module').then( m => m.Preferences7PageModule)
+    path: 'signup',
+    loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
+  },
+  {
+    path: 'welcome-option',
+    loadChildren: () => import('./welcome-option/welcome-option.module').then( m => m.WelcomeOptionPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'login-input',
+    loadChildren: () => import('./login-input/login-input.module').then( m => m.LoginInputPageModule)
   }
 ];
 @NgModule({

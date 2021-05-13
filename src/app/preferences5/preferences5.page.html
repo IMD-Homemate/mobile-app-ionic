@@ -27,8 +27,12 @@
 
           <ion-card-content class="bg-color ion-padding-vertical to-bottom2">
 
+            <ion-text color="grey" class="ion-padding-vertical ion-padding-horizontal ion-text-center">
+              <h1 class="ion-padding-horizontal ion-text-start">More about you</h1>
+            </ion-text>
+
             <ion-text color="grey" class="ion-padding-vertical">
-              <p class="ion-padding-horizontal  ion-padding-vertical bold">Your interests:</p>
+              <p class="ion-padding-horizontal bold">Your interests:</p>
             </ion-text>
             <ion-searchbar color="lightblue"></ion-searchbar>
 
@@ -56,18 +60,18 @@
 
             <ion-row>
               <ion-col>
-                <ion-row class="ion-padding-vertical"><ion-checkbox></ion-checkbox><p>A tidy house</p></ion-row>
-                <ion-row><ion-checkbox>Healthy food</ion-checkbox></ion-row>
-                <ion-row class="ion-padding-vertical"><ion-checkbox>Higher education</ion-checkbox></ion-row>
-                <ion-row><ion-checkbox>Making clear agreements</ion-checkbox></ion-row>
-                <ion-row class="ion-padding-vertical"><ion-checkbox>Private bathroom</ion-checkbox></ion-row>
+                <ion-row class="ion-padding-vertical"><ion-checkbox></ion-checkbox><p class="ion-padding-horizontal">A tidy house</p></ion-row>
+                <ion-row><ion-checkbox></ion-checkbox><p class="ion-padding-horizontal">Healthy food</p></ion-row>
+                <ion-row class="ion-padding-vertical"><ion-checkbox></ion-checkbox><p class="ion-padding-horizontal">Higher education</p></ion-row>
+                <ion-row><ion-checkbox></ion-checkbox><p class="ion-padding-horizontal">Making clear agreements</p></ion-row>
+                <ion-row class="ion-padding-vertical"><ion-checkbox></ion-checkbox><p class="ion-padding-horizontal">Private bathroom</p></ion-row>
               </ion-col>
             </ion-row>
 
             <ion-row class="ion-margin-vertical">
               <ion-col>
                 <div class="ion-text-start">
-                  <ion-button color="white" class="ion-padding-vertical">
+                  <ion-button color="white" class="ion-padding-vertical" [routerLink]="['/preferences2']">
                     <ion-text color="grey">
                       <p color="grey">Back</p>
                     </ion-text>

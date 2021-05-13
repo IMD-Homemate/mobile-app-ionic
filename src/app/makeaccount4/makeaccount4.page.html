@@ -2,7 +2,7 @@
 
   <ion-toolbar color="lightblue">
         <!-- Link naar rond deze icon, wat voor soort link? -->
-        <ion-icon name="close-outline" class="icon-back" size="large" color="darkblue"></ion-icon>
+        <ion-icon name="close-outline" class="icon-back" size="large" color="darkblue"  [routerLink]="['/signup']"></ion-icon>
   </ion-toolbar>
 
   <ion-grid>
@@ -21,6 +21,15 @@
               <ion-text color="grey">
                 <p class="ion-padding-vertical ion-padding-horizontal ion-text-center">Personal information</p>
               </ion-text>
+
+              <ion-list-header>
+                <ion-label color="grey">Upload picture</ion-label>
+              </ion-list-header>
+              <ion-item color="white">
+                <input type="file" name="img" accept="image/*">
+              </ion-item>
+
+
 
               <ion-list color="grey" id="test">
                 <ion-radio-group value="biff">
@@ -45,10 +54,12 @@
                 </ion-radio-group>
               </ion-list>
 
-              <ion-card>
+              <ion-list-header>
+                <ion-label color="grey">Date of birth</ion-label>
+              </ion-list-header>
+              <ion-card color="white">
                 <ion-item id="test">
-                  <ion-label>Date of birth</ion-label>
-                  <ion-datetime displayFormat="D MMM YYYY H:mm" min="1997" max="2010" value="2005-06-17T11:06Z"></ion-datetime>
+                  <ion-datetime displayFormat="D MMM YYYY" color="grey" min="1980" max="2000" value="2005-06-17"></ion-datetime>
                 </ion-item>
               </ion-card>
             </form>
@@ -58,7 +69,7 @@
                 <div class="ion-text-start">
                   <ion-button color="white" class="ion-padding-vertical">
                     <ion-text color="grey">
-                      <p color="grey">Back</p>
+                      <p color="grey" [routerLink]="['/makeaccount2']">Back</p>
                     </ion-text>
                   </ion-button>
                 </div>
@@ -72,7 +83,7 @@
             </ion-row>
 
               <ion-text color="grey" center>
-                <p class="p-dont">Already have an account? Log in.</p>
+                <p class="p-dont"  [routerLink]="['/login']">Already have an account? Log in.</p>
               </ion-text>
           </ion-card-content>
       </ion-col>

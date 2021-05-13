@@ -111,7 +111,7 @@ ion-content{
   // padding: 10px;
   // padding-top: 20px;
   border-radius: 25px;
-  height: 70vh;
+  height: auto;
   box-shadow: 1px 6px 15px 5px var(--ion-color-grey);
 
 }
@@ -170,4 +170,8 @@ ion-content{
 
 .area-shadow{
   box-shadow: 1px 6px 15px 0px var(--ion-color-grey);
+}
+
+.border-txt{
+  border: 0.1px solid var(--ion-color-lightgrey-tint);
 }
