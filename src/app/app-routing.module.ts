@@ -49,6 +49,10 @@ const routes: Routes = [
   {
     path: 'login-input',
     loadChildren: () => import('./login-input/login-input.module').then( m => m.LoginInputPageModule)
+  },
+  {
+    path: 'homepage',
+    loadChildren: () => import('./homepage/homepage.module').then( m => m.HomepagePageModule)
   }
 ];
 @NgModule({

@@ -1,0 +1,68 @@
+<ion-content [fullscreen]="true">
+
+  <ion-toolbar color="lightblue">
+        <ion-row class="ion-padding-horizontal ion-padding-vertical">
+
+          <ion-col>
+            <ion-icon name="home" size="large" color="darkblue"></ion-icon>
+          </ion-col>
+    
+          <ion-col>
+            <div class="ion-text-end">
+              <ion-icon name="person" size="large" color="darkblue"></ion-icon>
+            </div>
+          </ion-col>
+
+
+        </ion-row>
+  </ion-toolbar>
+
+  <ion-grid>
+    <ion-row center>
+      <ion-col size="12">
+
+        <div id="card-fullscreen">
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="4" class="ion-text-center">
+              <ion-icon name="apps" color="darkblue" size="large"></ion-icon>
+            </ion-col>
+            <ion-col size="4" class="ion-text-center">
+              <ion-button shape="round" class="btn-locationl" color="darkblue"><p>Location</p></ion-button>
+            </ion-col>  
+            <ion-col size="4" class="ion-text-center">
+              <ion-icon name="options" color="darkblue" size="large"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row >
+            <ion-col size="12" class="ion-no-padding">
+              <ion-list>
+                <ion-item>
+                  <ion-thumbnail item-start>
+                    <img src="assets/img/dummydata_apartment1.jpg">
+                  </ion-thumbnail>
+                  <h2>Title</h2>
+                  <p>Description</p>
+                  <button ion-button clear item-end>View</button>
+                </ion-item>
+                <ion-item>
+                  <ion-thumbnail item-start>
+                    <img src="assets/img/dummydata_apartment1.jpg">
+                  </ion-thumbnail>
+                  <h2>Title</h2>
+                  <p>Description</p>
+                  <button ion-button clear item-end>View</button>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+        </div>
+
+       
+
+
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
