@@ -1,0 +1,70 @@
+<ion-content [fullscreen]="true">
+
+
+  <ion-toolbar color="lightblue">
+        <!-- Link naar rond deze icon, wat voor soort link? -->
+          <ion-icon name="close-outline" class="icon-back" size="large" color="darkblue" [routerLink]="['/signup']"></ion-icon>
+  </ion-toolbar>
+
+<ion-grid>
+  <ion-row center>
+    <ion-col size="12">
+
+        <ion-card-header>
+          <ion-card-title class="ion-text-center" id="caps" color="darkblue">homemate</ion-card-title>
+          <ion-text color="grey">
+            <p class="sub-title">Create your account</p>
+          </ion-text>
+        </ion-card-header>
+
+        <ion-card-content class="bg-color">
+          <form id="form-id">
+            <ion-text color="grey ion-text-center">
+              <p class="ion-padding-vertical ion-padding-horizontal">We need your real name here on Homemate</p>
+            </ion-text>
+            <ion-card>
+              <ion-item id="test">
+                <ion-label position="stacked" color="grey">Firstname</ion-label>
+                <ion-input type="text" color="grey">
+                </ion-input>
+              </ion-item>
+            </ion-card>
+
+            <ion-card>
+              <ion-item id="test">
+                <ion-label position="stacked" color="grey">Lastname</ion-label>
+                <ion-input type="password" color="grey"></ion-input>
+              </ion-item>
+            </ion-card>
+          </form>
+
+          <ion-row >
+            <ion-col>
+              <div class="ion-text-start">
+                <ion-button color="white" class="ion-padding-vertical">
+                  <ion-text color="grey" [routerLink]="['/signup']">
+                    <p color="grey">Back</p>
+                  </ion-text>
+                </ion-button>
+              </div>
+            </ion-col>
+
+              <!-- <ion-button [routerLink]="['/makeaccount2']">Go to detail</ion-button> -->
+
+            <ion-col>
+              <div class="ion-text-end">
+                <ion-button shape="round" class="btn-small" color="light-lightblue"><p>Next</p></ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+
+            <ion-text color="grey" center>
+              <p class="p-dont" [routerLink]="['/login']">Already have an account? Log in.</p>
+            </ion-text>
+        </ion-card-content>
+
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>
