@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-terms',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TermsPage implements OnInit {
 
-  constructor() { }
+  terms : boolean;
+  constructor(public router : Router) { }
 
   ngOnInit() {
   }
+
+  acceptTerms(){
+    console.log(this.terms);
+    // this.router.navigate(['/terms']);
+    // this.router.navigate(['ma3'], { state: {firstname: this.firstname, lastname: this.lastname} });
+  }
+
+  update($event){
+    this.terms = $event.detail.checked;
+    console.log(this.terms);
+  }
+
 
 }

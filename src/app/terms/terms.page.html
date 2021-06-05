@@ -24,7 +24,7 @@
             </ion-text>
 
             <ion-item id="test">
-              <input type="checkbox" color="grey">
+              <ion-checkbox color="grey" (ionChange)="update($event)"></ion-checkbox>
               <ion-label class="ion-padding-horizontal">
                 <p>I accept the terms an conditions</p>
               </ion-label>
@@ -33,14 +33,14 @@
             <ion-row class="ion-padding-vertical">
               <ion-col>
                 <div class="ion-text-center">
-                  <ion-button shape="round" class="btn-small" color="light-lightblue"><p>Continue</p></ion-button>
+                  <ion-button shape="round" class="btn-small" color="light-lightblue" [disabled]="!terms" (click)="acceptTerms()"><p>Continue</p></ion-button>
                 </div>
               </ion-col>
             </ion-row>
 
-              <ion-text color="grey" center>
+              <!-- <ion-text color="grey" center>
                 <p class="p-dont">Already have an account? Log in.</p>
-              </ion-text>
+              </ion-text> -->
           </ion-card-content>
       </ion-col>
     </ion-row>
