@@ -16,15 +16,15 @@
         <ion-card-content>
 
 
-            <div class="ion-text-center ion-padding-top ion-margin-top">
+            <!-- <div class="ion-text-center ion-padding-top ion-margin-top">
               <ion-button shape="round" class="btn-shadow ion-margin-bottom ion-margin-top" color="light-lightblue">
                 <ion-icon name="logo-facebook" class="soc-icon ion-padding-horizontal" color="fb-blue"></ion-icon>
                 <p>Sign up with Facebook</p>
               </ion-button>
-            </div>
+            </div> -->
 
             <div class="ion-text-center">
-              <ion-button shape="round" class="btn-shadow ion-margin-bottom ion-margin-top " color="light-lightblue">
+              <ion-button (click)="signUp()" shape="round" class="btn-shadow ion-margin-bottom ion-margin-top " color="light-lightblue">
                 <ion-icon name="logo-google" class="soc-icon ion-padding-horizontal" color="google-red"></ion-icon>
                 <p>Sign up with Google</p>
               </ion-button>
@@ -35,7 +35,7 @@
             </div>
 
             <ion-text color="grey" center>
-              <p class="p-dont" [routerLink]="['/login']">Already have an account yet? Log in.</p>
+              <p class="p-dont" [routerLink]="['/']">Already have an account yet? Log in.</p>
             </ion-text>
         </ion-card-content>
 

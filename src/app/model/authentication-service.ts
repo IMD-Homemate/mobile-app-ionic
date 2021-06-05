@@ -90,7 +90,7 @@ export class AuthenticationService {
     try {
           const result = await this.ngFireAuth.signInWithPopup(provider);
           this.ngZone.run(() => {
-              this.router.navigate(['dashboard']);
+              // this.router.navigate(['dashboard']);
           });
           this.setUserData(result.user);
       } catch (error) {
@@ -117,7 +117,7 @@ export class AuthenticationService {
   async signOut() {
     await this.ngFireAuth.signOut();
       localStorage.removeItem('user');
-      this.router.navigate(['login']);
+      this.router.navigate(['']);
   }
 
 }

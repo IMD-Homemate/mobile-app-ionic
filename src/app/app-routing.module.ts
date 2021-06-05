@@ -73,7 +73,8 @@ const routes: Routes = [
   {
     path: 'homepage',
     loadChildren: () => import('./homepage/homepage.module').then( m => m.HomepagePageModule)
-
+  },
+  {
     path: 'add-person',
     loadChildren: () => import('./test-person/test-person.module').then( m => m.TestPersonPageModule)
   },

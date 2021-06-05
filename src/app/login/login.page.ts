@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import { AuthenticationService } from "../model/authentication-service";
+import { AuthenticationService } from '../model/authentication-service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
     this.authService.signIn(email.value, password.value)
       .then((res) => {
         if(this.authService.isEmailVerified) {
-          this.router.navigate(['dashboard']);          
+          this.router.navigate(['homepage']);          
         } else {
           window.alert('Email is not verified')
           return false;
@@ -29,6 +29,11 @@ export class LoginPage implements OnInit {
       }).catch((error) => {
         window.alert(error.message)
       })
+  }
+
+  googleLogIn(){
+    this.authService.googleAuth();
+    this.router.navigate(['homepage']);   
   }
 
   register(){
