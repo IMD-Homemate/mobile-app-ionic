@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  firebase: {
+  firebaseConfig: {
     apiKey: 'AIzaSyAHuX0lcHJz-IEAVSd0DYbN6SoEVCgtVQM',
     authDomain: 'homemate-4ed39.firebaseapp.com',
     databaseURL: 'https://homemate-4ed39-default-rtdb.europe-west1.firebasedatabase.app',

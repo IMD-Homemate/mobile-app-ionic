@@ -70,9 +70,19 @@ export class AuthenticationService {
     return (user.emailVerified !== false) ? true : false;
   }
 
+  get uuid(): string {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user.uid;
+  }
+
   // Sign in with Gmail
   googleAuth() {
     return this.authLogin(new firebase.auth.GoogleAuthProvider());
+  }
+
+  //Not working yet
+  facebookAuth() {
+    return this.authLogin(new firebase.auth.FacebookAuthProvider());
   }
 
   // Auth providers

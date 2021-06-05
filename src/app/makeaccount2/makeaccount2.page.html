@@ -18,15 +18,21 @@
         </ion-card-header>
 
         <ion-card-content class="bg-color">
-          <form>
+          <form [formGroup]="credentialsForm">
             <ion-text color="grey">
               <p class="ion-padding-vertical ion-padding-horizontal ion-text-center">Leave your email here. You need it to log in
                 and to reset your password.</p>
             </ion-text>
+            <div *ngIf="!passwordsEqual" class="validator-error">
+              <ion-row>
+                <ion-icon name="close-circle-outline" size="medium" color="danger"></ion-icon>
+                <p class="ion-padding-horizontal">Passwords don't match</p>
+              </ion-row>
+            </div>
             <ion-card>
               <ion-item id="test">
                 <ion-label position="stacked" color="grey">Email</ion-label>
-                <ion-input type="text" color="grey">
+                <ion-input type="text" #email [formControl]="credentialsForm.controls['email']" required color="grey">
                 </ion-input>
               </ion-item>
             </ion-card>
@@ -34,7 +40,7 @@
             <ion-card>
               <ion-item id="test">
                 <ion-label position="stacked" color="grey">Password</ion-label>
-                <ion-input type="password" color="grey">
+                <ion-input type="password" #password1 [formControl]="credentialsForm.controls['password']" required color="grey">
                 </ion-input>
               </ion-item>
             </ion-card>
@@ -42,28 +48,56 @@
             <ion-card>
               <ion-item id="test">
                 <ion-label position="stacked" color="grey">Confirm Password</ion-label>
-                <ion-input type="password" color="grey"></ion-input>
+                <ion-input type="password" #password2 [formControl]="credentialsForm.controls['password2']" required color="grey"></ion-input>
               </ion-item>
             </ion-card>
 
           </form>
 
+
+
+
+
           <ion-row class="ion-padding-horizontal">
             <ion-col>
 
               <ion-text color="grey">
-                <ion-row>
-                  <ion-icon name="checkmark-circle-outline" size="medium" color="success"></ion-icon>
-                  <p class="ion-padding-horizontal">8 characters or more</p>
-                </ion-row>
-                <ion-row>
-                  <ion-icon name="close-circle-outline" color="danger"></ion-icon>
-                  <p class="ion-padding-horizontal">1 uppercase character</p>
-                </ion-row>
-                <ion-row>
-                  <ion-icon name="close-circle-outline" color="danger"></ion-icon>
-                  <p class="ion-padding-horizontal" color="danger">1 symbol or number</p>
-                </ion-row>
+
+                <div *ngIf="!credentialsForm.controls.email.valid" class="validator-error">
+                  <ion-row>
+                    <ion-icon name="close-circle-outline" size="medium" color="danger"></ion-icon>
+                    <p class="ion-padding-horizontal">Invalid email</p>
+                  </ion-row>
+                </div>
+
+                <div *ngIf="credentialsForm.controls.password.valid" class="validator-error">
+                  <ion-row>
+                    <ion-icon name="checkmark-circle-outline" size="medium" color="success"></ion-icon>
+                    <p class="ion-padding-horizontal">8 characters or more</p>
+                  </ion-row>
+                  <ion-row>
+                    <ion-icon name="checkmark-circle-outline" size="medium" color="success"></ion-icon>
+                    <p class="ion-padding-horizontal">1 uppercase character</p>
+                  </ion-row>
+                  <ion-row>
+                    <ion-icon name="checkmark-circle-outline" size="medium" color="success"></ion-icon>
+                    <p class="ion-padding-horizontal" color="danger">1 symbol or number</p>
+                  </ion-row>
+                </div>
+                <div *ngIf="!credentialsForm.controls.password.valid" class="validator-error">
+                  <ion-row>
+                    <ion-icon name="close-circle-outline" size="medium" color="danger"></ion-icon>
+                    <p class="ion-padding-horizontal">8 characters or more</p>
+                  </ion-row>
+                  <ion-row>
+                    <ion-icon name="close-circle-outline" size="medium" color="danger"></ion-icon>
+                    <p class="ion-padding-horizontal">1 uppercase character</p>
+                  </ion-row>
+                  <ion-row>
+                    <ion-icon name="close-circle-outline" size="medium" color="danger"></ion-icon>
+                    <p class="ion-padding-horizontal" color="danger">1 symbol or number</p>
+                  </ion-row>
+                </div>
               </ion-text>
             </ion-col>
           </ion-row>
@@ -81,7 +115,7 @@
 
             <ion-col>
               <div class="ion-text-end">
-                <ion-button shape="round" class="btn-small" color="light-lightblue"><p>Next</p></ion-button>
+                <ion-button [disabled]="!credentialsForm.valid" (click)="signUp(email, password1, password2)" shape="round" class="btn-small" color="light-lightblue"><p>Next</p></ion-button>
               </div>
             </ion-col>
           </ion-row>

@@ -3,12 +3,13 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
 
 export class Person {
-    $key: string;
+    $key?: string;
     firstname: string;
     lastname: string;
     birthdate: string;
     gender: string;
     photo: string;
+    uuid: string;
 }
 
 @Injectable({

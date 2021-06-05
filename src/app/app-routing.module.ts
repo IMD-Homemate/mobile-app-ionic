@@ -15,23 +15,19 @@ const routes: Routes = [
     loadChildren: () => import('./verify-email/verify-email.module').then( m => m.VerifyEmailPageModule)
   },
   {
-    path: 'login',
-    loadChildren: () => import('./login-bart/login.module').then( m => m.LoginPageModule)
-  },
-  {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
   {
-    path: 'makeaccount1',
+    path: 'ma1',
     loadChildren: () => import('./makeaccount1/makeaccount1.module').then( m => m.Makeaccount1PageModule)
   },
   {
-    path: 'makeaccount2',
+    path: 'ma2',
     loadChildren: () => import('./makeaccount2/makeaccount2.module').then( m => m.Makeaccount2PageModule)
   },
   {
-    path: 'makeaccount4',
+    path: 'ma3',
     loadChildren: () => import('./makeaccount4/makeaccount4.module').then( m => m.Makeaccount4PageModule)
   },
   {
@@ -63,7 +59,7 @@ const routes: Routes = [
     loadChildren: () => import('./welcome-option/welcome-option.module').then( m => m.WelcomeOptionPageModule)
   },
   {
-    path: 'login',
+    path: '',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
@@ -71,7 +67,7 @@ const routes: Routes = [
     loadChildren: () => import('./login-input/login-input.module').then( m => m.LoginInputPageModule)
   },
   {
-    path: '',
+    path: 'add-person',
     loadChildren: () => import('./test-person/test-person.module').then( m => m.TestPersonPageModule)
   },
   {
