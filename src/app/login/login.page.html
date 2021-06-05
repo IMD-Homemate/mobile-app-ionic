@@ -32,11 +32,18 @@
                     </form>
                       <!-- Link naar forget your password pagina -->
                       <ion-text color="grey" center>
-                        <p class="p-padding">Forgot your password?</p>
+                        <p class="p-padding" [routerLink]="['/reset-password']">Forgot your password?</p>
                       </ion-text>
           
                       <div class="ion-text-center">
                         <ion-button shape="round" class="btn-shadow" color="light-lightblue" (click)="logIn(email, password)"><p>Log in</p></ion-button>
+                      </div>
+
+                      <div class="ion-text-center">
+                        <ion-button (click)="authService.googleAuth()" shape="round" class="btn-shadow ion-margin-bottom ion-margin-top " color="light-lightblue">
+                          <ion-icon name="logo-google" class="soc-icon ion-padding-horizontal" color="google-red"></ion-icon>
+                          <p>Login with Google</p>
+                        </ion-button>
                       </div>
           
                       <ion-text color="grey" center>
@@ -47,24 +54,24 @@
               </ion-col>
             </ion-row>
 
-            <ion-row>
+            <!-- <ion-row>
               <ion-col>
                 <div class="ion-text-center ion-padding-top ion-margin-top">
                   <ion-button (click)="authService.facebookAuth()" shape="round" class="btn-shadow ion-margin-bottom ion-margin-top" color="light-lightblue">
                     <ion-icon name="logo-facebook" class="soc-icon ion-padding-horizontal" color="fb-blue"></ion-icon>
-                    <!-- <p>Login with Facebook</p> -->
+                    <p>Login with Facebook</p>
                   </ion-button>
                 </div>
-              </ion-col>
-                <ion-col>
+              </ion-col> -->
+                 <!-- <ion-col>
                 <div class="ion-text-center">
                   <ion-button (click)="authService.googleAuth()" shape="round" class="btn-shadow ion-margin-bottom ion-margin-top " color="light-lightblue">
                     <ion-icon name="logo-google" class="soc-icon ion-padding-horizontal" color="google-red"></ion-icon>
-                    <!-- <p>Login with Google</p> -->
+                    <p>Login with Google</p>
                   </ion-button>
                 </div>
-              </ion-col>
-            </ion-row>
+              </ion-col> -->
+            <!-- </ion-row> -->
           </ion-grid>
 </ion-content>
 

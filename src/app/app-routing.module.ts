@@ -7,6 +7,10 @@ const routes: Routes = [
   //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   // },
   {
+    path: 'reset-password',
+    loadChildren: () => import('./reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
+  },
+  {
     path: 'registration',
     loadChildren: () => import('./registration/registration.module').then( m => m.RegistrationPageModule)
   },
@@ -77,6 +81,10 @@ const routes: Routes = [
   {
     path: 'test-update-person/:id',
     loadChildren: () => import('./test-update-person/test-update-person.module').then( m => m.TestUpdatePersonPageModule)
+  },
+  {
+    path: 'reset-password',
+    loadChildren: () => import('./reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
   }
 ];
 @NgModule({

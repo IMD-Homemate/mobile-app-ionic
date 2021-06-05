@@ -22,7 +22,7 @@ export class DashboardPage implements OnInit {
   logOut() {
     this.authService.signOut()
       .then((res) => {
-          this.router.navigate(['']);          
+          this.router.navigate(['/']);          
       }).catch((error) => {
         window.alert(error.message)
       })
