@@ -53,6 +53,10 @@ const routes: Routes = [
   {
     path: 'homepage',
     loadChildren: () => import('./homepage/homepage.module').then( m => m.HomepagePageModule)
+  },
+  {
+    path: 'detailpage',
+    loadChildren: () => import('./detailpage/detailpage.module').then( m => m.DetailpagePageModule)
   }
 ];
 @NgModule({
