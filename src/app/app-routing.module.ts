@@ -2,16 +2,36 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  // },
   {
-    path: 'makeaccount1',
+    path: 'reset-password',
+    loadChildren: () => import('./reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
+  },
+  {
+    path: 'registration',
+    loadChildren: () => import('./registration/registration.module').then( m => m.RegistrationPageModule)
+  },
+  {
+    path: 'verify-email',
+    loadChildren: () => import('./verify-email/verify-email.module').then( m => m.VerifyEmailPageModule)
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
+  {
+    path: 'ma1',
     loadChildren: () => import('./makeaccount1/makeaccount1.module').then( m => m.Makeaccount1PageModule)
   },
   {
-    path: 'makeaccount2',
+    path: 'ma2',
     loadChildren: () => import('./makeaccount2/makeaccount2.module').then( m => m.Makeaccount2PageModule)
   },
   {
-    path: 'makeaccount4',
+    path: 'ma3',
     loadChildren: () => import('./makeaccount4/makeaccount4.module').then( m => m.Makeaccount4PageModule)
   },
   {
@@ -43,7 +63,7 @@ const routes: Routes = [
     loadChildren: () => import('./welcome-option/welcome-option.module').then( m => m.WelcomeOptionPageModule)
   },
   {
-    path: 'login',
+    path: '',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
@@ -57,6 +77,22 @@ const routes: Routes = [
   {
     path: 'detailpage',
     loadChildren: () => import('./detailpage/detailpage.module').then( m => m.DetailpagePageModule)
+  },
+  {
+    path: 'add-person',
+    loadChildren: () => import('./test-person/test-person.module').then( m => m.TestPersonPageModule)
+  },
+  {
+    path: 'test-list-person',
+    loadChildren: () => import('./test-list-person/test-list-person.module').then( m => m.TestListPersonPageModule)
+  },
+  {
+    path: 'test-update-person/:id',
+    loadChildren: () => import('./test-update-person/test-update-person.module').then( m => m.TestUpdatePersonPageModule)
+  },
+  {
+    path: 'reset-password',
+    loadChildren: () => import('./reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
   }
 ];
 @NgModule({

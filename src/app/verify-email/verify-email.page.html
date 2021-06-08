@@ -1,0 +1,40 @@
+<ion-content [fullscreen]="true">
+
+
+  <ion-toolbar color="lightblue">
+        <!-- Link naar rond deze icon, wat voor soort link? -->
+        <ion-icon name="close-outline" class="icon-back" size="large" color="darkblue" [routerLink]="['/signup']"></ion-icon>
+  </ion-toolbar>
+
+<ion-grid>
+  <ion-row center>
+    <ion-col size="12">
+
+        <ion-card-header>
+          <ion-card-title class="ion-text-center" id="caps" color="darkblue">homemate</ion-card-title>
+          <ion-text color="grey">
+            <p class="sub-title">Verify Email</p>
+          </ion-text>
+        </ion-card-header>
+
+        <ion-card-content class="bg-color">
+          <ion-grid>
+            <ion-row>
+              <p>
+                Please check your email and click on the link to verfiy your email address.
+              </p>
+              <ion-button type="submit" (click)="authService.SendVerificationMail()" expand="block">
+                Resend Verification Email
+              </ion-button>
+              <ion-button type="submit" (click)="logIn()" expand="block">
+                Done
+              </ion-button>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>
