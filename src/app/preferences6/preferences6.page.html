@@ -35,7 +35,7 @@
 
             <!-- SHOW WHEN SEEKER -->
 
-          <div>
+          <div *ngIf = "preferences.type == 'seeker'">
             <ion-text color="grey" class="ion-padding-vertical">
               <p class="ion-padding-horizontal  ion-padding-vertical bold">Tell something more about yourself!</p>
             </ion-text>
@@ -46,11 +46,11 @@
             </ion-text>
 
             <ion-item class="ion-padding-vertical" color="white border-txt" >
-              <ion-textarea color="grey"></ion-textarea>
+              <ion-textarea color="grey" [(ngModel)]="preferences.biography"></ion-textarea>
             </ion-item>
           </div>
             <!-- SHOW WHEN OFFERER -->
-          <div>
+          <div *ngIf="preferences.type == 'offerer'">
             <ion-text color="grey" class="ion-padding-vertical">
               <p class="ion-padding-horizontal  ion-padding-vertical bold">Tell something more about your cohousing situation!</p>
             </ion-text>
@@ -61,7 +61,7 @@
             </ion-text>
 
             <ion-item class="ion-padding-vertical" color="white border-txt" >
-              <ion-textarea color="grey"></ion-textarea>
+              <ion-textarea color="grey" [(ngModel)]="preferences.biography"></ion-textarea>
             </ion-item>
 
             <ion-text color="grey" class="ion-padding-vertical">
@@ -69,7 +69,7 @@
             </ion-text>
             <ion-card color="white">
               <ion-item id="test">
-                <ion-datetime displayFormat="D MMM YYYY" color="grey" max="2023"  min="2021" value="2021-06-17"></ion-datetime>
+                <ion-datetime displayFormat="D MMM YYYY" color="grey" max="2023"  min="2021" value="2021-06-17" [(ngModel)]="preferences.date"></ion-datetime>
               </ion-item>
             </ion-card>
           </div>
@@ -87,7 +87,7 @@
 
               <ion-col>
                 <div class="ion-text-end">
-                  <ion-button shape="round" class="btn-small" color="light-lightblue"><p>Search!</p></ion-button>
+                  <ion-button shape="round" class="btn-small" color="light-lightblue" (click)="next()" [disabled]="preferences.biography == undefined"><p>Search!</p></ion-button>
                 </div>
               </ion-col>
             </ion-row>

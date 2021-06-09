@@ -34,23 +34,38 @@
             <ion-text color="grey" class="ion-padding-vertical">
               <p class="ion-padding-horizontal bold">Your interests:</p>
             </ion-text>
-            <ion-searchbar color="lightblue"></ion-searchbar>
+           
+              
+
+            <ion-item>
+              <ion-input type="text" placeholder="New interest" #interest clearInput></ion-input>
+              <button color="primary" solid item-right (click)="interests.push([true,interest.value])">Add</button>
+            </ion-item>
+          
+
+            <!-- <ion-grid>
+              <ion-row *ngFor = "let number of ); let i = index;">
+                <ion-col><ion-button shape="round" class="interest selected">{{interests[i]}}</ion-button></ion-col>
+                <ion-col><ion-button shape="round" class="interest not-selected" color="white">{{interests[i]}}</ion-button></ion-col>
+                <ion-col><ion-button shape="round" class="interest selected">{{interests[i]}}</ion-button></ion-col>
+              </ion-row>
+            </ion-grid> -->
 
             <ion-grid>
-              <ion-row>
-                <ion-col><ion-button shape="round" class="interest selected">Sports</ion-button></ion-col>
-                <ion-col><ion-button shape="round" class="interest not-selected" color="white">Gaming</ion-button></ion-col>
-                <ion-col><ion-button shape="round" class="interest selected">Hiking</ion-button></ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col><ion-button shape="round" class="interest selected">Music</ion-button></ion-col>
-                <ion-col><ion-button shape="round" class="interest not-selected" color="white">Films</ion-button></ion-col>
-                <ion-col><ion-button shape="round" class="interest selected">Food</ion-button></ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col><ion-button shape="round" class="interest selected">Netflix</ion-button></ion-col>
-                <ion-col><ion-button shape="round" class="interest not-selected" color="white">Running</ion-button></ion-col>
-                <ion-col><ion-button shape="round" class="interest selected">Vegan</ion-button></ion-col>
+              <ion-row >
+                <ion-col *ngFor = "let interest of interests; let i = index;"sizeLg="4" sizeMd="4" sizeXs="4">
+                  <div *ngIf = "!interests[i][0]">
+                    <ion-button shape="round" class="interest not-selected" color="white" (click)="interests[i][0] = true">
+                      {{interests[i][1]}}
+                    </ion-button>
+                  </div>
+                  <div *ngIf = "interests[i][0]">
+                    <ion-button shape="round" class="interest selected"(click)="interests[i][0] = false">
+                      {{interests[i][1]}}
+                    </ion-button>
+                  </div>
+                  
+              </ion-col>
               </ion-row>
             </ion-grid>
 
@@ -58,13 +73,15 @@
               <p class="ion-padding-horizontal ion-padding-vertical bold">I find this important:</p>
             </ion-text>
 
+
+
             <ion-row>
               <ion-col>
-                <ion-row class="ion-padding-vertical"><ion-checkbox></ion-checkbox><p class="ion-padding-horizontal">A tidy house</p></ion-row>
-                <ion-row><ion-checkbox></ion-checkbox><p class="ion-padding-horizontal">Healthy food</p></ion-row>
-                <ion-row class="ion-padding-vertical"><ion-checkbox></ion-checkbox><p class="ion-padding-horizontal">Higher education</p></ion-row>
-                <ion-row><ion-checkbox></ion-checkbox><p class="ion-padding-horizontal">Making clear agreements</p></ion-row>
-                <ion-row class="ion-padding-vertical"><ion-checkbox></ion-checkbox><p class="ion-padding-horizontal">Private bathroom</p></ion-row>
+                <ion-row class="ion-padding-vertical"><ion-checkbox (ionChange)="update(0, $event.detail.checked)"></ion-checkbox><p class="ion-padding-horizontal">A tidy house</p></ion-row>
+                <ion-row><ion-checkbox (ionChange)="update(1, $event.detail.checked)"></ion-checkbox><p class="ion-padding-horizontal">Healthy food</p></ion-row>
+                <ion-row class="ion-padding-vertical"><ion-checkbox (ionChange)="update(2, $event.detail.checked)"></ion-checkbox><p class="ion-padding-horizontal">Higher education</p></ion-row>
+                <ion-row><ion-checkbox (ionChange)="update(3, $event.detail.checked)"></ion-checkbox><p class="ion-padding-horizontal">Making clear agreements</p></ion-row>
+                <ion-row class="ion-padding-vertical"><ion-checkbox (ionChange)="update(4, $event.detail.checked)"></ion-checkbox><p class="ion-padding-horizontal">Private bathroom</p></ion-row>
               </ion-col>
             </ion-row>
 
@@ -81,7 +98,7 @@
 
               <ion-col>
                 <div class="ion-text-end">
-                  <ion-button shape="round" class="btn-small" color="light-lightblue"><p>Next</p></ion-button>
+                  <ion-button shape="round" class="btn-small" color="light-lightblue" (click)="next()"><p>Next</p></ion-button>
                 </div>
               </ion-col>
             </ion-row>

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
+import { Preferences } from '../shared/models/preferences.model';
+import { AuthenticationService } from './authentication-service';
 
 export class Person {
     $key?: string;
@@ -20,11 +22,13 @@ export class PersonService {
 
   constructor(
     private ngFirestore: AngularFirestore,
+    private authService: AuthenticationService,
     private router: Router
   ) { }
 
   create(person: Person) {
-    return this.ngFirestore.collection('person').add(person);
+    const id = this.authService.uuid;
+    return this.ngFirestore.collection('person').doc(id).set(person);
   }
 
   getPersons() {
@@ -35,15 +39,91 @@ export class PersonService {
     return this.ngFirestore.collection('person').doc(id).valueChanges();
   }
 
+  // getMe(id) {
+  //   return this.ngFirestore.collection('person').doc(id).valueChanges();
+  // }
+
   update(id, person: Person) {
     this.ngFirestore.collection('person').doc(id).update(person)
       .then(() => {
-        this.router.navigate(['/test-list-person']);
+        console.log('Person updated');
       }).catch(error => console.log(error));;
   }
 
   delete(id: string) {
     this.ngFirestore.doc('person/' + id).delete();
   }
+
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class PreferencesService {
+
+  constructor(
+    private ngFirestore: AngularFirestore,
+    private router: Router
+  ) { }
+
+  create(preference: Preferences) {
+    return this.ngFirestore.collection('preferences').add(preference);
+  }
+
+  getPersons() {
+    return this.ngFirestore.collection('preferences').snapshotChanges();
+  }
+  
+  getPerson(id) {
+    return this.ngFirestore.collection('preferences').doc(id).valueChanges();
+  }
+
+  update(id, person: Person) {
+    this.ngFirestore.collection('preferences').doc(id).update(person)
+      .then(() => {
+        this.router.navigate(['/test-list-person']);
+      }).catch(error => console.log(error));;
+  }
+
+  delete(id: string) {
+    this.ngFirestore.doc('preferences/' + id).delete();
+  }
+
+}
+
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class ProfileImageService {
+
+  constructor(
+    private ngFirestore: AngularFirestore
+  ) { }
+
+  // create(preference: Preferences) {
+  //   return this.ngFirestore.collection('preferences').add(preference);
+  // }
+
+  // getPersons() {
+  //   return this.ngFirestore.collection('preferences').snapshotChanges();
+  // }
+  
+  getProfileImage(id) {
+    return this.ngFirestore.collection('profileImages').doc(id).valueChanges();
+  }
+
+  // update(id, person: Person) {
+  //   this.ngFirestore.collection('preferences').doc(id).update(person)
+  //     .then(() => {
+  //       this.router.navigate(['/test-list-person']);
+  //     }).catch(error => console.log(error));;
+  // }
+
+  // delete(id: string) {
+  //   this.ngFirestore.doc('preferences/' + id).delete();
+  // }
 
 }

@@ -3,6 +3,7 @@ import { AuthenticationService } from "../model/authentication-service";
 import { Router } from '@angular/router';
 import { Person } from '../model/crud.service';
 import { PersonService } from './../model/crud.service';
+import { ImageService } from '../model/image.service';
 
 @Component({
   selector: 'app-makeaccount4',
@@ -16,14 +17,20 @@ export class Makeaccount4Page implements OnInit {
   gender: string;
   public date: any;
   p : Person;
+  imageEvent: any;
+  photo:any;
 
-  constructor(private router: Router, public authService: AuthenticationService, public crudService: PersonService) {
+  constructor(private router: Router, public authService: AuthenticationService, public crudService: PersonService, public imageService: ImageService) {
     this.firstname = this.router.getCurrentNavigation().extras.state.firstname;
     this.lastname = this.router.getCurrentNavigation().extras.state.lastname; 
 
   }
 
   ngOnInit() {
+  }
+
+  updateImageURL($event){
+    this.imageEvent = $event;
   }
 
   onOpChange($event) {
@@ -36,7 +43,10 @@ export class Makeaccount4Page implements OnInit {
     console.log(this.date);
   }
 
-  next(){
+  async next(){
+
+    this.photo = await this.imageService.uploadFile(this.imageEvent);
+    console.log(this.photo);
     this.p = {
       firstname: this.firstname,
       lastname: this.lastname,

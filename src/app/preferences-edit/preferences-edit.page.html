@@ -1,0 +1,203 @@
+<ion-content [fullscreen]="true">
+
+  <ion-toolbar color="lightblue">
+        <!-- Link naar rond deze icon, wat voor soort link? -->
+        <!-- <ion-row class="ion-padding-horizontal ion-padding-vertical"> -->
+            <!-- <ion-col> -->
+              <ion-icon name="chevron-back-outline" class="icon-back" size="large" color="darkblue" [routerLink]="['/profile']"></ion-icon>
+            <!-- </ion-col> -->
+        <!-- </ion-row> -->
+  </ion-toolbar>
+
+  <ion-grid>
+    <ion-row center>
+      <ion-col size="12">
+
+          <ion-card-header>
+            <div class="ion-text-center">
+              <ion-text id="caps" class="big-text" color="darkblue" >John Doe</ion-text>
+            </div>
+            <div class="ion-text-center">
+              <ion-text color="grey">Edit your preferences here</ion-text>
+            </div>
+
+          </ion-card-header>
+
+          <ion-card-content class="bg-color ion-padding-vertical">
+
+              <ion-list id="test">
+
+                <!-- SEEKER /OFFERER -->
+                <ion-row class="ion-padding-vertical">
+                  <ion-label class="ion-padding-horizontal bold" color="grey">1. What describes you the best?</ion-label>
+                  <ion-list color="grey" id="test">
+                    <ion-radio-group value="biff">
+                      <ion-item>
+                        <ion-label color="grey" >Seeker</ion-label>
+                        <ion-radio slot="start" value="seeker"></ion-radio>
+                      </ion-item>
+                      <ion-text color="grey" class="ion-padding-vertical">
+                        <p class="ion-padding-vertical">I’m searching for a room or roommates</p>
+                      </ion-text>
+
+                      <ion-item>
+                        <ion-label color="grey">Offerer</ion-label>
+                        <ion-radio slot="start" value="offerer"></ion-radio>
+                      </ion-item>
+                      <ion-text color="grey" class="ion-padding-vertical">
+                        <p class="ion-padding-horizontal ion-padding-vertical">I’m searching for a roommate to fill my empty room</p>
+                      </ion-text>
+
+                    </ion-radio-group>
+                  </ion-list>
+                </ion-row>
+
+                <!-- QUESTIONS USER -->
+                <ion-row class="ion-padding-vertical">
+                <ion-label class=" bold" color="grey">2. Specific questions about yourself</ion-label>
+
+                <ion-item id="test">
+                  <ion-checkbox color="grey"></ion-checkbox>
+                  <ion-label class="ion-padding-horizontal">
+                    <p>I own pets</p>
+                  </ion-label>
+                </ion-item>
+                <ion-item id="test">
+                  <ion-checkbox color="grey"></ion-checkbox>
+                  <ion-label class="ion-padding-horizontal">
+                    <p>I smoke</p>
+                  </ion-label>
+                </ion-item>
+                <ion-item id="test">
+                  <ion-checkbox color="grey"></ion-checkbox>
+                  <ion-label class="ion-padding-horizontal">
+                    <p>I play an instrument</p>
+                  </ion-label>
+                </ion-item>
+                </ion-row>
+
+                <!-- QUESTIONS COHOUSING SITUATION -->
+                <ion-row class="ion-padding-vertical">
+                <ion-label class="bold ion-padding-vertical" color="grey">3. Specific questions about your future homemates</ion-label>
+
+                <ion-item id="test">
+                  <ion-checkbox checked="" color="grey"></ion-checkbox>
+                  <ion-label class="ion-padding-horizontal">
+                    <p>I'm okay with people owning pets</p>
+                  </ion-label>
+                </ion-item>
+                <ion-item id="test">
+                  <ion-checkbox color="grey"></ion-checkbox>
+                  <ion-label class="ion-padding-horizontal">
+                    <p>I'm okay with people who smoke</p>
+                  </ion-label>
+                </ion-item>
+                <ion-item id="test">
+                  <ion-checkbox color="grey"></ion-checkbox>
+                  <ion-label checked="" class="ion-padding-horizontal">
+                    <p>I'm okay with people who play instruments</p>
+                  </ion-label>
+                </ion-item>
+              </ion-row>
+
+              <!-- INTERESTS -->
+
+              <ion-label class=" bold" color="grey">Your interests</ion-label>
+              <!-- HIER KOMEN DIE INTERESTS -->
+              <ion-grid>
+                <ion-row >
+                </ion-row>
+                </ion-grid>
+
+
+              <ion-label class=" bold" color="grey">I find this important</ion-label>
+              <ion-item id="test">
+                <ion-checkbox checked="" color="grey"></ion-checkbox>
+                <ion-label class="ion-padding-horizontal">
+                  <p>A tidy house</p>
+                </ion-label>
+              </ion-item>
+              <ion-item id="test">
+                <ion-checkbox color="grey"></ion-checkbox>
+                <ion-label class="ion-padding-horizontal">
+                  <p>Healthy food</p>
+                </ion-label>
+              </ion-item>
+              <ion-item id="test">
+                <ion-checkbox color="grey"></ion-checkbox>
+                <ion-label class="ion-padding-horizontal">
+                  <p>Higher education</p>
+                </ion-label>
+              </ion-item>
+              <ion-item id="test">
+                <ion-checkbox checked="" color="grey"></ion-checkbox>
+                <ion-label class="ion-padding-horizontal">
+                  <p>Making clear agreements</p>
+                </ion-label>
+              </ion-item>
+              <ion-item id="test">
+                <ion-checkbox color="grey"></ion-checkbox>
+                <ion-label class="ion-padding-horizontal">
+                  <p>Privatie bathroom</p>
+                </ion-label>
+              </ion-item>
+
+
+
+
+              <!-- ABOUT YOURSELF -->
+
+              <!-- SHOW WHEN SEEKER -->
+              <!-- <ion-row class="ion-padding-vertical"> -->
+                <ion-label class="bold ion-padding-vertical" color="grey">Tell something more about yourself!</ion-label>
+
+                <ion-text color="grey">
+                  <p class="ion-padding-vertical">
+                    Why do you want to do cohousing? What do you (dis)like? Is something important to know?
+                  </p>
+                </ion-text>
+
+                <ion-item class="ion-padding-vertical" color="white border-txt" >
+                  <ion-textarea color="grey" value="I'm searching for a place for me and my cat. I like to live with max 3 other people."></ion-textarea>
+                </ion-item>
+
+
+              <!-- SHOW WHEN OFFERER -->
+
+              <ion-label class="bold ion-padding-vertical" color="grey">Tell something more about your cohousing situation!</ion-label>
+
+              <ion-text color="grey" class="ion-padding-vertical">
+                <p class="ion-padding-horizontal  ion-padding-vertical">
+                  How many people are you? What do you like? What is important in your house?
+                </p>
+              </ion-text>
+
+              <ion-item class="ion-padding-vertical" color="white border-txt">
+                <ion-textarea color="grey" value="I want to live together with clean people who like to drink a glass of wine in the evening."></ion-textarea>
+              </ion-item>
+
+              <ion-text color="grey" class="ion-padding-vertical">
+                <p class="ion-padding-horizontal ion-padding-vertical bold">Available from:</p>
+              </ion-text>
+              <ion-card color="white">
+                <ion-item id="test">
+                  <ion-datetime displayFormat="D MMM YYYY" color="grey" max="2023"  min="2021" value="2021-06-17"></ion-datetime>
+                </ion-item>
+              </ion-card>
+
+                <ion-col>
+                  <div class="ion-text-end">
+                    <ion-button shape="round" class="btn-small" color="light-lightblue"><p>Save</p></ion-button>
+                  </div>
+                </ion-col>
+
+
+              </ion-list>
+
+          </ion-card-content>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

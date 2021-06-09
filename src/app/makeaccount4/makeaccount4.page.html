@@ -26,9 +26,8 @@
                 <ion-label color="grey">Upload picture</ion-label>
               </ion-list-header>
               <ion-item color="white">
-                <input type="file" name="img" accept="image/*">
+                <input type="file" name="img" (change)="updateImageURL($event.target.files)" accept="image/*">
               </ion-item>
-
 
 
               <ion-list color="grey" id="test">

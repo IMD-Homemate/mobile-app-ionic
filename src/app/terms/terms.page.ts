@@ -16,13 +16,12 @@ export class TermsPage implements OnInit {
 
   acceptTerms(){
     console.log(this.terms);
-    // this.router.navigate(['/terms']);
+    this.router.navigate(['/preferences1']);
     // this.router.navigate(['ma3'], { state: {firstname: this.firstname, lastname: this.lastname} });
   }
 
   update($event){
     this.terms = $event.detail.checked;
-    console.log(this.terms);
   }
 
 
