@@ -103,8 +103,13 @@ const routes: Routes = [
     loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
   },
   {
+<<<<<<< HEAD
     path: 'chat',
     loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
+=======
+    path: 'preferences-edit',
+    loadChildren: () => import('./preferences-edit/preferences-edit.module').then( m => m.PreferencesEditPageModule)
+>>>>>>> 4fbcd50d80da6c2e8010e50bcdaf4edab44e2248
   }
 ];
 @NgModule({
