@@ -64,11 +64,13 @@ export class PreferencesService {
 
   constructor(
     private ngFirestore: AngularFirestore,
-    private router: Router
+    private router: Router,
+    private authService: AuthenticationService
   ) { }
 
   create(preference: Preferences) {
-    return this.ngFirestore.collection('preferences').add(preference);
+    const id = this.authService.uuid;
+    return this.ngFirestore.collection('preferences').doc(id).set(preference);
   }
 
   getPersons() {
