@@ -17,7 +17,8 @@ export class Makeaccount4Page implements OnInit {
   gender: string;
   public date: any;
   p : Person;
-  imageEvent: string;
+  imageEvent: any;
+  photo:any;
 
   constructor(private router: Router, public authService: AuthenticationService, public crudService: PersonService, public imageService: ImageService) {
     this.firstname = this.router.getCurrentNavigation().extras.state.firstname;
@@ -29,7 +30,7 @@ export class Makeaccount4Page implements OnInit {
   }
 
   updateImageURL($event){
-    this.imageEvent = $event.item(0);
+    this.imageEvent = $event;
   }
 
   onOpChange($event) {
@@ -42,7 +43,10 @@ export class Makeaccount4Page implements OnInit {
     console.log(this.date);
   }
 
-  next(){
+  async next(){
+
+    this.photo = await this.imageService.uploadFile(this.imageEvent);
+    console.log(this.photo);
     this.p = {
       firstname: this.firstname,
       lastname: this.lastname,
@@ -51,8 +55,6 @@ export class Makeaccount4Page implements OnInit {
       photo: 'hello',
       uuid: this.authService.uuid
     }
-
-    this.imageService.uploadImage(this.imageEvent);
 
     this.crudService.create(this.p)
       .then(() => {

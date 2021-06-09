@@ -1,77 +1,106 @@
 import { Injectable } from '@angular/core';
-import { Router } from "@angular/router";
 
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
+import { AuthenticationService } from './authentication-service';
 
-
-export interface imgFile {
-    name: string;
-    filepath: string;
-    size: number;
-  }
-  
+export interface MyData {
+  name: string;
+  filepath: string;
+  // uid: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class ImageService {
 
-    // File upload task 
-  fileUploadTask: AngularFireUploadTask;
+  // Upload Task 
+  task: AngularFireUploadTask;
 
+  // Progress in percentage
+  percentage: Observable<number>;
 
-  // Uploaded image collection
-  files: Observable<imgFile[]>;
+  // Snapshot of uploading file
+  snapshot: Observable<any>;
 
-  // Image specifications
-  imgName: string;
+  // Uploaded File URL
+  public UploadedFileURL: Observable<string>;
 
+  //Uploaded Image List
+  images: Observable<MyData[]>;
 
-  private filesCollection: AngularFirestoreCollection<imgFile>;
+  //File details  
+  fileName:string;
 
-  
-  constructor(
-    private afs: AngularFirestore, private afStorage: AngularFireStorage) {
+  //Status check 
+  isUploading:boolean;
+  isUploaded:boolean;
 
-    // Define uploaded files collection
-    this.filesCollection = afs.collection<imgFile>('imagesCollection');
-    this.files = this.filesCollection.valueChanges();
+  private imageCollection: AngularFirestoreCollection<MyData>;
+  constructor(private storage: AngularFireStorage, private database: AngularFirestore, private authService: AuthenticationService) {
+    //Set collection where our documents/ images info will save
+    this.imageCollection = database.collection<MyData>('profileImages');
+    this.images = this.imageCollection.valueChanges();
   }
 
 
-  uploadImage(file) {
-      
-
-    // Image validation
-    if (file.type.split('/')[0] !== 'image') { 
-      console.log('File type is not supported!')
-      return;
-    }
-
-    this.imgName = file.name;
-
-    // Storage path
-    const fileStoragePath = `filesStorage/${new Date().getTime()}_${file.name}`;
-
-    // Image reference
-    const imageRef = this.afStorage.ref(fileStoragePath);
-    console.log(imageRef);
-    // File upload task
-    this.fileUploadTask = this.afStorage.upload(fileStoragePath, file);
-
-  }
-
-  storeFilesFirebase(image: imgFile) {
-    const fileId = this.afs.createId();
+  uploadFile(event: FileList) {
     
-    this.filesCollection.doc(fileId).set(image).then(res => {
-      console.log(res);
-    }).catch(err => {
-      console.log(err);
-    });
+
+    // The File object
+    const file = event.item(0)
+
+    // Validation for Images Only
+    if (file.type.split('/')[0] !== 'image') { 
+     console.error('unsupported file type :( ')
+     return;
     }
+
+
+    this.fileName = file.name;
+
+    // The storage path
+    const path = `profileImages/${new Date().getTime()}_${file.name}`;
+
+    // Totally optional metadata
+    const customMetadata = { app: 'Freaky Image Upload Demo' };
+
+    //File reference
+    const fileRef = this.storage.ref(path);
+
+    // The main task
+    this.storage.upload(path, file, { customMetadata }).then( res => {
+      
+    // Get uploaded file storage path
+    this.UploadedFileURL = fileRef.getDownloadURL();
+    
+    
+    this.UploadedFileURL.subscribe(resp=>{
+      this.addImagetoDB({
+        name: file.name,
+        filepath: resp,
+        // uid: this.authService.uuid
+      });
+    },error=>{
+      console.error(error);
+    })}
+  );
+  }
+
+  addImagetoDB(image: MyData) {
+    //Create an ID for document
+    // const id = this.database.createId();
+    const id = this.authService.uuid;
+    //Set document id with value in database
+    this.imageCollection.doc(id).set(image).then(resp => {
+      console.log(resp);
+    }).catch(error => {
+      console.log("error " + error);
+    });
+  }
+
+
 }
