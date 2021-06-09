@@ -40,7 +40,6 @@ export class ChatPage implements OnInit {
   }
 
   getReceiver(){
-    console.log(this.receiverPerson.subscribe());
     return this.receiverPerson.subscribe();
   }
  
