@@ -38,6 +38,11 @@ export class ChatPage implements OnInit {
       this.content.scrollToBottom();
     });
   }
+
+  getReceiver(){
+    console.log(this.receiverPerson.subscribe());
+    return this.receiverPerson.subscribe();
+  }
  
   // signOut() {
   //   this.chatService.signOut().then(() => {

@@ -29,6 +29,7 @@ export class ChatService {
   }
 
   addChatMessage(msg, to) {
+    console.log(new Date().getTime());
     return this.afs.collection('messages').add({
       msg: msg,
       from: this.currentUser,
