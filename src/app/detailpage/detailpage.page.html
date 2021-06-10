@@ -39,24 +39,22 @@
                 <ion-card-header>
                   <ion-row>
                     <ion-col size="6">
-                      <ion-card-title class="ion-text-start">App Titel</ion-card-title>
+                      <ion-card-title class="ion-text-start">{{residence.name}}</ion-card-title>
                     </ion-col>
                     <ion-col size="6">
-                      <ion-card-title class="ion-text-end">Prijs</ion-card-title>
+                      <ion-card-title class="ion-text-end">Prijs: € {{residence.price}}</ion-card-title>
                     </ion-col>
                   </ion-row>
                   
-                  <ion-card-subtitle class="ion-text-start">Stad</ion-card-subtitle>
+                  <ion-card-subtitle class="ion-text-start">{{residence.address}}</ion-card-subtitle>
                   
                 </ion-card-header>
               
                 <ion-card-content class="ion-text-left">
-                  Hi Everyone
-The spacious cozy furnished room is available from April 18, 2021. It’s a co-housing and you will be sharing the house with 
-i) Thya (32) : Working professional
-ii) Rin (26): Pursuing Masters.
-It has washing machine and disher. 
+                  {{residence.description}}
                 </ion-card-content>
+                
+                Startdate: {{residence.startdate |  date:'dd/mm/yy'}}
               </ion-card>
             </ion-col>
           </ion-row>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../model/authentication-service';
-import { ProfileImage, ProfileImageService } from '../model/crud.service';
+import { ProfileImage, ProfileImageService, ResidenceService } from '../model/crud.service';
+import { Residence } from '../shared/models/residence.model';
 
 @Component({
   selector: 'app-detailpage',
@@ -10,12 +11,12 @@ import { ProfileImage, ProfileImageService } from '../model/crud.service';
 })
 export class DetailpagePage implements OnInit {
 
-
+  residence: any;
   images: ProfileImage[];
   temp: ProfileImage[];
   id:string;
 
-  constructor(private router: Router,public authService : AuthenticationService, private pImageService : ProfileImageService) { 
+  constructor(private router: Router,public authService : AuthenticationService, private pImageService : ProfileImageService, private residenceService: ResidenceService) { 
     this.images = [];
     this.id = this.router.getCurrentNavigation().extras.state.id;
   }
@@ -31,6 +32,10 @@ export class DetailpagePage implements OnInit {
       this.temp.forEach(element => {
         if (this.id == element.uuid) this.images.push(element);
       });
+    });
+
+    this.residenceService.getResidence(this.authService.uuid).subscribe((data) => {
+      this.residence = data;
     });
   }
 

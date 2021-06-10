@@ -169,16 +169,16 @@ export class ResidenceService {
     private authService: AuthenticationService
   ) { }
 
-  create(preference: Residence) {
+  create(residence: Residence) {
     const id = this.authService.uuid;
-    return this.ngFirestore.collection('residence').doc(id).set(preference);
+    return this.ngFirestore.collection('residence').doc(id).set(residence);
   }
 
-  getPreferences() {
+  getResidences() {
     return this.ngFirestore.collection('residence').snapshotChanges();
   }
   
-  getPreference(id) {
+  getResidence(id) {
     return this.ngFirestore.collection('residence').doc(id).valueChanges();
   }
 
