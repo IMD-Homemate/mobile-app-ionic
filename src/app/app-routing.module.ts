@@ -105,6 +105,34 @@ const routes: Routes = [
   {
     path: 'preferences-edit',
     loadChildren: () => import('./preferences-edit/preferences-edit.module').then( m => m.PreferencesEditPageModule)
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'tab1',
+    loadChildren: () => import('./tab1/tab1.module').then( m => m.Tab1PageModule)
+  },
+  {
+    path: 'tab2',
+    loadChildren: () => import('./tab2/tab2.module').then( m => m.Tab2PageModule)
+  },
+  {
+    path: 'walkthrough',
+    loadChildren: () => import('./walkthrough/walkthrough.module').then( m => m.WalkthroughPageModule)
+  },
+  {
+    path: 'walkthrough2',
+    loadChildren: () => import('./walkthrough2/walkthrough2.module').then( m => m.Walkthrough2PageModule)
+  },
+  {
+    path: 'walkthrough3',
+    loadChildren: () => import('./walkthrough3/walkthrough3.module').then( m => m.Walkthrough3PageModule)
+  },
+  {
+    path: 'walkthrough4',
+    loadChildren: () => import('./walkthrough4/walkthrough4.module').then( m => m.Walkthrough4PageModule)
   }
 ];
 @NgModule({
