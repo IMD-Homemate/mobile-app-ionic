@@ -15,7 +15,7 @@
 
           <ion-card-header>
             <div class="ion-text-center">
-              <ion-text id="caps" class="big-text" color="darkblue" >John Doe</ion-text>
+              <ion-text id="caps" class="big-text" color="darkblue" >{{firstname}} {{lastname}}</ion-text>
             </div>
             <div class="ion-text-center">
               <ion-text color="grey">Account information</ion-text>
@@ -31,11 +31,10 @@
               </div>
               <ion-row class="ion-align-items-center ion-justify-content-center ion-padding-vertical">
                 <ion-thumbnail>
-                  <!-- HIER NOG EEN UPLOAD OM IMAGE TE VERANDEREN ?? -->
-                  <ion-img src="assets/img/profile-picture.png" id="profile-pic"></ion-img>
+                  <img [src]="url" />
                 </ion-thumbnail>
               </ion-row>
-
+              <input class="ion-center" type="file" name="img" value="" (change)="updateImageURL($event.target.files)" accept="image/*">
             </ion-col>
 
 
@@ -44,7 +43,7 @@
                 <ion-label class="ion-padding-horizontal" color="grey">Firstname</ion-label>
                 <ion-card>
                   <ion-item id="test">
-                    <ion-input type="text" name="firstname" color="grey" value="John">
+                    <ion-input type="text" name="firstname" color="grey" [(ngModel)]="firstname">
                     </ion-input>
                   </ion-item>
                 </ion-card>
@@ -52,11 +51,11 @@
                 <ion-label class="ion-padding-horizontal" color="grey">Lastname</ion-label>
                 <ion-card>
                   <ion-item id="test">
-                    <ion-input type="text" name="lastname" color="grey" value="Doe">
+                    <ion-input type="text" name="lastname" color="grey" [(ngModel)]="lastname">
                     </ion-input>
                   </ion-item>
                 </ion-card>
-
+<!-- 
                 <ion-label class="ion-padding-horizontal" color="grey">Email address</ion-label>
                 <ion-card>
                   <ion-item id="test">
@@ -87,10 +86,10 @@
                     <ion-input type="password" required color="grey" value="Azerty1234*">
                     </ion-input>
                   </ion-item>
-                </ion-card>
+                </ion-card> -->
 
                 <ion-label class="ion-padding-horizontal" color="grey">Gender</ion-label>
-                <ion-radio-group value="biff">
+                <ion-radio-group [value]="gender" (ionChange)="onOpChange($event)">
                   <ion-item>
                     <ion-label color="grey">Female</ion-label>
                     <ion-radio slot="start" value="f"></ion-radio>
@@ -110,13 +109,13 @@
                 <ion-label class="ion-padding-horizontal" color="grey">Date of birth</ion-label>
                 <ion-card color="white">
                   <ion-item id="test">
-                    <ion-datetime displayFormat="D MMM YYYY" color="grey" min="1980" max="2000" value="15 apr 1999"></ion-datetime>
+                    <ion-datetime displayFormat="D MMM YYYY" color="grey" min="1980" max="2000" [(ngModel)]="birthdate"></ion-datetime>
                   </ion-item>
                 </ion-card>
 
                 <ion-col>
                   <div class="ion-text-end">
-                    <ion-button shape="round" class="btn-small" color="light-lightblue"><p>Save</p></ion-button>
+                    <ion-button shape="round" class="btn-small" color="light-lightblue" (click)="save()"><p>Save</p></ion-button>
                   </div>
                 </ion-col>
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PersonService } from './../model/crud.service';
 
 export class Person {
@@ -21,7 +22,7 @@ export class TestListPersonPage implements OnInit {
 
   persons: Person[];
 
-  constructor(private crudService: PersonService) { }
+  constructor(private crudService: PersonService, private router: Router) { }
 
   ngOnInit() {
     this.crudService.getPersons().subscribe((res) => {
@@ -32,6 +33,10 @@ export class TestListPersonPage implements OnInit {
         };
       })
     });
+  }
+
+  next(id){
+    this.router.navigate(['chat'], { state: {id: id} });
   }
 
   todoList() {

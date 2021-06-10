@@ -15,7 +15,7 @@
 
           <ion-card-header>
             <div class="ion-text-center">
-              <ion-text id="caps" class="big-text" color="darkblue" >John Doe</ion-text>
+              <ion-text id="caps" class="big-text" color="darkblue" >{{firstname}} {{lastname}}</ion-text>
             </div>
             <div class="ion-text-center">
               <ion-text color="grey">Edit your preferences here</ion-text>
@@ -31,7 +31,7 @@
                 <ion-row class="ion-padding-vertical">
                   <ion-label class="ion-padding-horizontal bold" color="grey">1. What describes you the best?</ion-label>
                   <ion-list color="grey" id="test">
-                    <ion-radio-group value="biff">
+                    <ion-radio-group [value]="preferences.type">
                       <ion-item>
                         <ion-label color="grey" >Seeker</ion-label>
                         <ion-radio slot="start" value="seeker"></ion-radio>
@@ -57,19 +57,19 @@
                 <ion-label class=" bold" color="grey">2. Specific questions about yourself</ion-label>
 
                 <ion-item id="test">
-                  <ion-checkbox color="grey"></ion-checkbox>
+                  <ion-checkbox color="grey" [(ngModel)]="preferences.pet"></ion-checkbox>
                   <ion-label class="ion-padding-horizontal">
                     <p>I own pets</p>
                   </ion-label>
                 </ion-item>
                 <ion-item id="test">
-                  <ion-checkbox color="grey"></ion-checkbox>
+                  <ion-checkbox color="grey" [(ngModel)]="preferences.smoker"></ion-checkbox>
                   <ion-label class="ion-padding-horizontal">
                     <p>I smoke</p>
                   </ion-label>
                 </ion-item>
                 <ion-item id="test">
-                  <ion-checkbox color="grey"></ion-checkbox>
+                  <ion-checkbox color="grey" [(ngModel)]="preferences.instrument"></ion-checkbox>
                   <ion-label class="ion-padding-horizontal">
                     <p>I play an instrument</p>
                   </ion-label>

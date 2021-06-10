@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../model/authentication-service';
+import { ProfileImageService, PersonService } from '../model/crud.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePage implements OnInit {
 
-  constructor() { }
+  url: any;
+  firstname: string;
+  lastname: string;
 
-  ngOnInit() {
+  constructor(private authService :AuthenticationService, private pImageService : ProfileImageService, private personService: PersonService) {
+    
   }
 
+  
+
+  ngOnInit() {
+    // this.pImageService.getProfileImage(this.authService.uuid).subscribe((data) => {
+    //   this.url = data['filepath'];
+    // });
+    this.personService.getPerson(this.authService.uuid).subscribe((data) => {
+      this.firstname = data['firstname'];
+      this.lastname = data['lastname'];
+    });
+  }
+
+  ionViewWillEnter(){
+    this.pImageService.getProfileImage(this.authService.uuid).subscribe((data) => {
+      this.url = data['filepath'];
+    });
+  }
+  
 }
