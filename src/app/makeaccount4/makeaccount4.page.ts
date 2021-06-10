@@ -44,15 +44,13 @@ export class Makeaccount4Page implements OnInit {
   }
 
   async next(){
-
-    this.photo = await this.imageService.uploadFile(this.imageEvent);
-    console.log(this.photo);
+    
+    await this.imageService.uploadFile(this.imageEvent);
     this.p = {
       firstname: this.firstname,
       lastname: this.lastname,
       gender: this.gender,
       birthdate: this.date,
-      photo: 'hello',
       uuid: this.authService.uuid
     }
 

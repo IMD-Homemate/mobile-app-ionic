@@ -14,22 +14,25 @@ export class ProfilePage implements OnInit {
   lastname: string;
 
   constructor(private authService :AuthenticationService, private pImageService : ProfileImageService, private personService: PersonService) {
-   }
+    
+  }
+
+  
 
   ngOnInit() {
-
-
-    this.pImageService.getProfileImage(this.authService.uuid).subscribe((data) => {
-      this.url = data['filepath'];
-    });
+    // this.pImageService.getProfileImage(this.authService.uuid).subscribe((data) => {
+    //   this.url = data['filepath'];
+    // });
     this.personService.getPerson(this.authService.uuid).subscribe((data) => {
       this.firstname = data['firstname'];
       this.lastname = data['lastname'];
     });
-    console.log(this.authService.isLoggedIn, this.authService.uuid);
-
-  
   }
 
+  ionViewWillEnter(){
+    this.pImageService.getProfileImage(this.authService.uuid).subscribe((data) => {
+      this.url = data['filepath'];
+    });
+  }
   
 }

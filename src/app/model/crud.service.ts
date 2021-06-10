@@ -10,7 +10,6 @@ export class Person {
     lastname: string;
     birthdate: string;
     gender: string;
-    photo: string;
     uuid: string;
 }
 
@@ -125,8 +124,8 @@ export class ProfileImageService {
   //     }).catch(error => console.log(error));;
   // }
 
-  // delete(id: string) {
-  //   this.ngFirestore.doc('preferences/' + id).delete();
-  // }
+  delete(id: string) {
+    this.ngFirestore.doc('profileImages/' + id).delete();
+  }
 
 }

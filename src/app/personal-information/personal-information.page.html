@@ -31,11 +31,10 @@
               </div>
               <ion-row class="ion-align-items-center ion-justify-content-center ion-padding-vertical">
                 <ion-thumbnail>
-                  <!-- HIER NOG EEN UPLOAD OM IMAGE TE VERANDEREN ?? -->
                   <img [src]="url" />
                 </ion-thumbnail>
               </ion-row>
-
+              <input class="ion-center" type="file" name="img" value="" (change)="updateImageURL($event.target.files)" accept="image/*">
             </ion-col>
 
 

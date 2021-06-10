@@ -47,7 +47,7 @@ export class ImageService {
   }
 
 
-  uploadFile(event: FileList) {
+  async uploadFile(event: FileList){
     
 
     // The File object
@@ -70,6 +70,7 @@ export class ImageService {
 
     //File reference
     const fileRef = this.storage.ref(path);
+    
 
     // The main task
     this.storage.upload(path, file, { customMetadata }).then( res => {
