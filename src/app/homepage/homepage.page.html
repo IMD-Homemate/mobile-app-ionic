@@ -38,12 +38,14 @@
               <ion-list>
                 <ion-item *ngFor="let person of persons" lines="full" [routerLink]="['/detailpage']">
                   <ion-thumbnail item-start>
-                    <img [src]="url" />
+                    <img [src]= "getImageURL(person)" />
                   </ion-thumbnail>
                   <p>{{person.firstname}}</p>
                   <button ion-button clear item-end></button>
                 </ion-item>
               </ion-list>
+              <ion-button (click)="click()"></ion-button>
+
             </ion-col>
           </ion-row>
         </div>

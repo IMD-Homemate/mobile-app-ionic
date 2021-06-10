@@ -10,6 +10,7 @@ export class Person {
   birthdate: string;
   gender: string;
   photo: string;
+  id: string;
 }
 
 @Component({
@@ -19,13 +20,15 @@ export class Person {
 })
 export class HomepagePage implements OnInit {
 
+  images: any;
   url: any;
   persons: Person[];
 
-  constructor(private authService :AuthenticationService, private pImageService : ProfileImageService, private personService: PersonService, private crudService: PersonService, private router: Router) { }
+  constructor(private authService :AuthenticationService, private pImageService : ProfileImageService, private personService: PersonService, private crudService: PersonService, private router: Router) { 
+    console.log(this.persons);
+  }
 
-  ngOnInit() {
-
+  ngOnInit() {  
     this.crudService.getPersons().subscribe((res) => {
       this.persons = res.map((t) => {
         return {
@@ -33,6 +36,24 @@ export class HomepagePage implements OnInit {
           ...t.payload.doc.data() as Person
         };
       })
+    });/* .then(()=>{
+      this.persons.forEach(person => {
+        this.pImageService.getProfileImage(person.id).subscribe((data) => {
+          this.images.push(data);
+        });
+      });
+    }) */
+    
+  
+  }
+
+  click(){
+    console.log(this.images);
+  }
+
+  getImageURL(person){
+    this.pImageService.getProfileImage(person.uuid).subscribe((data) => {
+      return data['filepath'];
     });
   }
 
