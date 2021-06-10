@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../model/authentication-service';
-import { ProfileImageService, PersonService } from './../model/crud.service';
+import { ProfileImageService, PersonService, ProfileImage } from './../model/crud.service';
 
 export class Person {
   $key: string;
@@ -9,7 +9,6 @@ export class Person {
   lastname: string;
   birthdate: string;
   gender: string;
-  photo: string;
   id: string;
 }
 
@@ -20,12 +19,12 @@ export class Person {
 })
 export class HomepagePage implements OnInit {
 
-  images: any;
+  images: ProfileImage[];
   url: any;
   persons: Person[];
 
   constructor(private authService :AuthenticationService, private pImageService : ProfileImageService, private personService: PersonService, private crudService: PersonService, private router: Router) { 
-    console.log(this.persons);
+
   }
 
   ngOnInit() {  
@@ -33,28 +32,22 @@ export class HomepagePage implements OnInit {
       this.persons = res.map((t) => {
         return {
           id: t.payload.doc.id,
-          ...t.payload.doc.data() as Person
+          ...t.payload.doc.data() as Person,
         };
       })
-    });/* .then(()=>{
-      this.persons.forEach(person => {
-        this.pImageService.getProfileImage(person.id).subscribe((data) => {
-          this.images.push(data);
-        });
-      });
-    }) */
-    
-  
+    });
+    this.pImageService.getProfileImages().subscribe((data) => {
+      this.images = data.map((t) => {
+        return {
+          id: t.payload.doc.id,
+          ...t.payload.doc.data() as ProfileImage
+        };
+      })
+    });
   }
 
   click(){
-    console.log(this.images);
-  }
-
-  getImageURL(person){
-    this.pImageService.getProfileImage(person.uuid).subscribe((data) => {
-      return data['filepath'];
-    });
+    console.log(this.persons);
   }
 
   next(id){

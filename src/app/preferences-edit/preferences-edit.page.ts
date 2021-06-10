@@ -21,7 +21,7 @@ export class PreferencesEditPage implements OnInit {
       this.firstname = data['firstname'];
       this.lastname = data['lastname'];
     });
-    this.preferenceService.getPerson(this.authService.uuid).subscribe((data) => {
+    this.preferenceService.getPreference(this.authService.uuid).subscribe((data) => {
       this.preferences = data;
       console.log(this.preferences);
     });

@@ -94,6 +94,14 @@ export class PreferencesService {
 }
 
 
+
+export class ProfileImage {
+  $key?: string;
+  filepath: string;
+  name: string;
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -108,9 +116,9 @@ export class ProfileImageService {
   //   return this.ngFirestore.collection('preferences').add(preference);
   // }
 
-  // getPersons() {
-  //   return this.ngFirestore.collection('preferences').snapshotChanges();
-  // }
+  getProfileImages() {
+    return this.ngFirestore.collection('profileImages').snapshotChanges();
+  }
   
   getProfileImage(id) {
     return this.ngFirestore.collection('profileImages').doc(id).valueChanges();
