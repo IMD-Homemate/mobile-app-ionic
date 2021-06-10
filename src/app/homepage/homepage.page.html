@@ -42,20 +42,12 @@
                       <img *ngIf="person.id == image.id" [src]="image.filepath" />
                     </div>
                   </ion-thumbnail>
-                  <p>{{person.firstname}}</p>
-                  <button ion-button clear item-end></button>
+                  <p >{{person.firstname}} {{person.lastname}}</p>
                 </ion-item>
               </ion-list>
-              <ion-button (click)="click()"></ion-button>
-
             </ion-col>
           </ion-row>
         </div>
-
-       
-
-
-
       </ion-col>
     </ion-row>
   </ion-grid>
