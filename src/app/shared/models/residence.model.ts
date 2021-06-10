@@ -4,5 +4,5 @@ export class Residence {
     description: string;
     startdate: number;
     address: string;
-    photo : string;
+    price : string;
 }

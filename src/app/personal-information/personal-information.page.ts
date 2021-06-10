@@ -50,8 +50,8 @@ export class PersonalInformationPage implements OnInit {
 
   async updateImageURL($event){
     this.imageEvent = $event;
-    this.pImageService.delete(this.authService.uuid);
-    await this.imageService.uploadFile(this.imageEvent);
+    this.pImageService.deleteProfileImage(this.authService.uuid);
+    await this.imageService.uploadFile(this.imageEvent, 'profileImages');
   }
 
   async save(){

@@ -50,10 +50,23 @@
             </ion-item>
           </div>
             <!-- SHOW WHEN OFFERER -->
-          <div *ngIf="preferences.type == 'offerer'">
+            <div *ngIf="preferences.type == 'offerer'">
             <ion-text color="grey" class="ion-padding-vertical">
               <p class="ion-padding-horizontal  ion-padding-vertical bold">Tell something more about your cohousing situation!</p>
             </ion-text>
+
+            <ion-text color="grey" class="ion-padding-vertical">
+              <p class="ion-padding-horizontal  ion-padding-vertical">
+                How do you want to name your place?
+              </p>
+            </ion-text>
+
+            <ion-item class="ion-padding-vertical" color="white border-txt" >
+              <ion-input type="text" [(ngModel)]="residence.name" color="grey"></ion-input>
+
+            </ion-item>
+
+
             <ion-text color="grey" class="ion-padding-vertical">
               <p class="ion-padding-horizontal  ion-padding-vertical">
                 How many people are you? What do you like? What is important in your house?
@@ -61,7 +74,7 @@
             </ion-text>
 
             <ion-item class="ion-padding-vertical" color="white border-txt" >
-              <ion-textarea color="grey" [(ngModel)]="preferences.biography"></ion-textarea>
+              <ion-textarea color="grey" [(ngModel)]="residence.description"></ion-textarea>
             </ion-item>
 
             <ion-text color="grey" class="ion-padding-vertical">
@@ -69,7 +82,7 @@
             </ion-text>
             <ion-card color="white">
               <ion-item id="test">
-                <ion-datetime displayFormat="D MMM YYYY" color="grey" max="2023"  min="2021" value="2021-06-17" [(ngModel)]="preferences.date"></ion-datetime>
+                <ion-datetime displayFormat="D MMM YYYY" color="grey" max="2023"  min="2021" value="2021-06-17" [(ngModel)]="residence.startdate"></ion-datetime>
               </ion-item>
             </ion-card>
 
@@ -78,7 +91,7 @@
             </ion-text>
             <ion-card color="white">
               <ion-item id="test">
-                <ion-textarea color="grey"></ion-textarea>
+                <ion-textarea color="grey" [(ngModel)]="residence.address"></ion-textarea>
               </ion-item>
             </ion-card>
 
@@ -86,15 +99,29 @@
               <ion-label color="grey">Upload pictures of your property and your homemates</ion-label>
             </ion-text>
             <ion-item color="white">
-              <input type="file" name="img">
+              <input type="file" name="img" (change)="imageService.uploadFile($event.target.files, 'residenceImages');" accept="image/*">
             </ion-item>
+
+            <ion-list>
+              <div *ngFor="let image of images">
+              <ion-item *ngIf="authService.uuid == image.uuid" lines="full">
+                
+                <ion-thumbnail item-start>
+                    <img [src]="image.filepath" />
+                </ion-thumbnail>
+                <p>{{image.name}}</p>
+                <ion-button color="light" float-right (click)="pImageService.deleteResidenceImage(image.id)">Delete</ion-button>
+      
+              </ion-item>
+            </div>
+            </ion-list>
 
             <ion-text color="grey" class="ion-padding-vertical">
               <p class="ion-padding-horizontal ion-padding-vertical bold">What is the amount of money your new homemate needs to contribute to pay the rent? (All incl.)</p>
             </ion-text>
             <ion-card color="white">
               <ion-item id="test">
-                <ion-textarea color="grey">€550</ion-textarea>
+                <ion-textarea color="grey" [(ngModel)]="residence.price" aria-placeholder="500"></ion-textarea>
               </ion-item>
             </ion-card>
 
@@ -113,7 +140,12 @@
 
               <ion-col>
                 <div class="ion-text-end">
-                  <ion-button shape="round" class="btn-small" color="light-lightblue" (click)="next()" [disabled]="preferences.biography == undefined"><p>Search!</p></ion-button>
+                  <ion-button shape="round" class="btn-small" color="light-lightblue" (click)="next()" [disabled]="residence.description == undefined || 
+                  residence.name == undefined || 
+                  residence.price == undefined || 
+                  residence.address == undefined || 
+                  residence.startdate == undefined                                                                          
+                  "><p>Search!</p></ion-button>
                 </div>
               </ion-col>
             </ion-row>
