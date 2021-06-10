@@ -72,11 +72,11 @@ export class PreferencesService {
     return this.ngFirestore.collection('preferences').doc(id).set(preference);
   }
 
-  getPersons() {
+  getPreferences() {
     return this.ngFirestore.collection('preferences').snapshotChanges();
   }
   
-  getPerson(id) {
+  getPreference(id) {
     return this.ngFirestore.collection('preferences').doc(id).valueChanges();
   }
 
@@ -116,6 +116,7 @@ export class ProfileImageService {
     return this.ngFirestore.collection('profileImages').doc(id).valueChanges();
   }
 
+ 
   // update(id, person: Person) {
   //   this.ngFirestore.collection('preferences').doc(id).update(person)
   //     .then(() => {

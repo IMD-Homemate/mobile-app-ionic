@@ -75,6 +75,10 @@ const routes: Routes = [
     loadChildren: () => import('./homepage/homepage.module').then( m => m.HomepagePageModule)
   },
   {
+    path: 'detailpage',
+    loadChildren: () => import('./detailpage/detailpage.module').then( m => m.DetailpagePageModule)
+  },
+  {
     path: 'add-person',
     loadChildren: () => import('./test-person/test-person.module').then( m => m.TestPersonPageModule)
   },

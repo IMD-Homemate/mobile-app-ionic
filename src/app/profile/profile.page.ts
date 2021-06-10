@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../model/authentication-service';
-import { ProfileImageService, PersonService } from './../model/crud.service'
-import { Observable } from 'rxjs';
+import { ProfileImageService, PersonService } from '../model/crud.service';
 
 @Component({
   selector: 'app-profile',
