@@ -72,6 +72,23 @@
                 <ion-datetime displayFormat="D MMM YYYY" color="grey" max="2023"  min="2021" value="2021-06-17" [(ngModel)]="preferences.date"></ion-datetime>
               </ion-item>
             </ion-card>
+
+            <ion-text color="grey" class="ion-padding-vertical">
+              <p class="ion-padding-horizontal ion-padding-vertical bold">What is the address of your property?</p>
+            </ion-text>
+            <ion-card color="white">
+              <ion-item id="test">
+                <ion-textarea color="grey"></ion-textarea>
+              </ion-item>
+            </ion-card>
+
+            <ion-text color="grey" class="ion-padding-vertical">
+              <ion-label color="grey">Upload pictures of your property and your homemates</ion-label>
+            </ion-text>
+            <ion-item color="white">
+              <input type="file" name="img">
+            </ion-item>
+
           </div>
 
             <ion-row class="ion-margin-vertical">
