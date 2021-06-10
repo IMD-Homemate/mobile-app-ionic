@@ -100,6 +100,7 @@ export class ProfileImage {
   $key?: string;
   filepath: string;
   name: string;
+  uuid: string;
 }
 
 
