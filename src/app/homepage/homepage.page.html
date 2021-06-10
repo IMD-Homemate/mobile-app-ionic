@@ -36,21 +36,12 @@
           <ion-row >
             <ion-col size="12" class="ion-no-padding">
               <ion-list>
-                <ion-item [routerLink]="['/detailpage']">
+                <ion-item *ngFor="let person of persons" lines="full" [routerLink]="['/detailpage']">
                   <ion-thumbnail item-start>
-                    <img src="assets/img/dummydata_apartment1.jpg">
+                    <img [src]="url" />
                   </ion-thumbnail>
-                  <h2>Title</h2>
-                  <p>Description</p>
-                  <button ion-button clear item-end>></button>
-                </ion-item>
-                <ion-item>
-                  <ion-thumbnail item-start>
-                    <img src="assets/img/dummydata_apartment1.jpg">
-                  </ion-thumbnail>
-                  <h2>Title</h2>
-                  <p>Description</p>
-                  <button ion-button clear item-end>></button>
+                  <p>{{person.firstname}}</p>
+                  <button ion-button clear item-end></button>
                 </ion-item>
               </ion-list>
             </ion-col>
