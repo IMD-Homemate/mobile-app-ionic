@@ -1,0 +1,63 @@
+<ion-content [fullscreen]="true" color="softpink">
+
+
+  <ion-toolbar color="softpink" class="ion-padding-horizontal">
+      <!-- Link naar rond deze icon, wat voor soort link? -->
+      <!-- <ion-row class="ion-padding-horizontal ion-padding-vertical"> -->
+          <!-- <ion-col> -->
+            <!-- <ion-icon name="chevron-back-outline" class="icon-back" size="large" color="darkblue" [routerLink]="['/profile']"></ion-icon> -->
+          <!-- </ion-col> -->
+      <!-- </ion-row> -->
+      <ion-col>
+        <ion-img src="assets/img/hm-btn.png" class="ion-padding-vertical" id="homemate-icon"></ion-img>
+      </ion-col>
+  </ion-toolbar>
+
+  <ion-grid>
+
+
+    <ion-row class="ion-justify-content-center">
+
+        <ion-row class="test-center">
+          <ion-col size="1">
+            <ion-icon name="chevron-back-outline" class="ion-justify-content-center" size="large" color="white" [routerLink]="['/walkthrough3']"></ion-icon>
+          </ion-col>
+        </ion-row>
+
+      <ion-col size="8" class="test-center">
+        <div class="wt-div4 ion-padding-horizontal ion-padding-vertical ion-text-center">
+          <div>
+            <ion-img src="assets/img/wt-03.jpeg" class="ion-padding-vertical"></ion-img>
+          </div>
+          <div>
+            <ion-text color="grey">
+              <h3 class="bold" >Based on criteria</h3>
+              <p>You don’t share just your flat, you share your life together..</p>
+            </ion-text>
+            <!-- <p color="darkblue">Tekst</p> -->
+          </div>
+        </div>
+      </ion-col>
+
+      <ion-row class="test-center">
+        <ion-col size="1" class="test-center">
+          <ion-icon name="chevron-forward-outline" size="large" color="softpink"></ion-icon>
+        </ion-col>
+      </ion-row>
+
+
+
+    </ion-row>
+
+    <ion-row class="test-center ion-justify-content-center">
+      <ion-col size="9"  class="test-center ion-padding-vertical">
+          <ion-button shape="round" class="btn-shadow" color="light-lightblue" [routerLink]="['/preferences1']" color="white">
+            <p color="grey">Get started</p>
+          </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+
+</ion-content>
