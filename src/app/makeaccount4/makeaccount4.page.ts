@@ -45,7 +45,7 @@ export class Makeaccount4Page implements OnInit {
 
   async next(){
     
-    await this.imageService.uploadFile(this.imageEvent);
+    await this.imageService.uploadFile(this.imageEvent, 'profileImages');
     this.p = {
       firstname: this.firstname,
       lastname: this.lastname,

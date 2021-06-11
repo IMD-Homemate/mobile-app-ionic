@@ -24,7 +24,7 @@ export class HomepagePage implements OnInit {
   persons: Person[];
 
   constructor(private authService :AuthenticationService, private pImageService : ProfileImageService, private personService: PersonService, private crudService: PersonService, private router: Router) { 
-
+    
   }
 
   ngOnInit() {  
@@ -46,8 +46,8 @@ export class HomepagePage implements OnInit {
     });
   }
 
-  click(){
-    console.log(this.persons);
+  click(id){
+    this.router.navigate(['detailpage'], { state: {id: id} });
   }
 
   next(id){
