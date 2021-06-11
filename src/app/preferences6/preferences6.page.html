@@ -102,7 +102,7 @@
               <input type="file" name="img" (change)="imageService.uploadFile($event.target.files, 'residenceImages');" accept="image/*">
             </ion-item>
 
-            <ion-list>
+            <ion-list *ngIf="images == defined">
               <div *ngFor="let image of images">
               <ion-item *ngIf="authService.uuid == image.uuid" lines="full">
                 
@@ -140,12 +140,14 @@
 
               <ion-col>
                 <div class="ion-text-end">
-                  <ion-button shape="round" class="btn-small" color="light-lightblue" (click)="next()" [disabled]="residence.description == undefined || 
+
+                  <ion-button *ngIf="preferences.type == 'offerer'" shape="round" class="btn-small" color="light-lightblue" (click)="next()" [disabled]="residence.description == undefined || 
                   residence.name == undefined || 
                   residence.price == undefined || 
                   residence.address == undefined || 
                   residence.startdate == undefined                                                                          
                   "><p>Search!</p></ion-button>
+                  <ion-button *ngIf="preferences.type == 'seeker'" shape="round" class="btn-small" color="light-lightblue" (click)="next()" [disabled]="preferences.biography == undefined"><p>Search!</p></ion-button>
                 </div>
               </ion-col>
             </ion-row>

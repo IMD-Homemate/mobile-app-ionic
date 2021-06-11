@@ -51,7 +51,7 @@ export class Preferences6Page implements OnInit {
     this.residenceService.create(Object.assign({}, this.residence))
       .then(() => {
         console.log('Residence added succesfully');
-        this.router.navigate(['/homepage']);
+        this.router.navigate(['/tabs/homepage']);
       }).catch((err) => {
         console.log(err)
       }
