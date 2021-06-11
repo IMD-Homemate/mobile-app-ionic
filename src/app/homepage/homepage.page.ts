@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../model/authentication-service';
 import { Preferences } from '../shared/models/preferences.model';
-import { ProfileImageService, PersonService, ProfileImage, PreferencesService } from './../model/crud.service';
+import { Residence } from '../shared/models/residence.model';
+import { ProfileImageService, PersonService, ProfileImage, PreferencesService, ResidenceService } from './../model/crud.service';
 
 export class Person {
   $key: string;
@@ -26,12 +27,24 @@ export class HomepagePage implements OnInit {
   preferences: string[];
   tempPref: Preferences[];
   myPreferences: Preferences;
+  residences: Residence[];
+  residenceImages : ProfileImage[];
 
-  constructor(private authService :AuthenticationService, private pImageService : ProfileImageService, private personService: PersonService, private preferencesService: PreferencesService, private router: Router) { 
-    this.preferences = [];
+  constructor(private authService :AuthenticationService, private residenceService: ResidenceService,private pImageService : ProfileImageService, private personService: PersonService, private preferencesService: PreferencesService, private router: Router) { 
+    this.preferences = this.images = this.persons = this.preferences = this.residences = this.residenceImages = [];
+    this.myPreferences = new Preferences();
   }
 
   ngOnInit() {  
+    this.pImageService.getResidenceImages().subscribe((data) => {
+      this.residenceImages = data.map((t) => {
+        return {
+          id: t.payload.doc.id,
+          ...t.payload.doc.data() as ProfileImage
+        };
+      })
+    });
+
     this.preferencesService.getPreference(this.authService.uuid).subscribe((data) => {
       this.myPreferences = data as Preferences;
     });
@@ -40,6 +53,14 @@ export class HomepagePage implements OnInit {
         return {
           id: t.payload.doc.id,
           ...t.payload.doc.data() as Person,
+        };
+      })
+    });
+    this.residenceService.getResidences().subscribe((res) => {
+      this.residences = res.map((t) => {
+        return {
+          id: t.payload.doc.id,
+          ...t.payload.doc.data() as Residence,
         };
       })
     });
@@ -59,15 +80,15 @@ export class HomepagePage implements OnInit {
         };
       })
       this.tempPref.forEach(pref => {
-        console.log(this.myPreferences.type, pref.type);
         if (this.myPreferences.type != pref.type) this.preferences.push(pref.uuid);
       });
     });
 
+    
   }
 
   click(id){
-    this.router.navigate(['tabs/detailpage'], { state: {id: id} });
+    this.router.navigate(['/tabs/detailpage'], { state: {id: id} });
   }
 
   checkType(person){
@@ -75,6 +96,16 @@ export class HomepagePage implements OnInit {
       return true
     }
   }
+
+  getFirstResidenceImage(residenceId){
+    return this.residenceImages.find(image => {
+      if (residenceId == image.uuid){
+        return image.filepath;
+      } 
+    }).filepath;
+  }
+
+  
 
   // next(id){
   //   this.router.navigate(['chat'], { state: {id: id} });

@@ -4,16 +4,14 @@
         <ion-row class="ion-padding-horizontal ion-padding-vertical">
 
           <ion-col>
-            <ion-img src="assets/img/hm-btn.png" [routerLink]="['/tabs/homepage']" id="homemate-icon"></ion-img>
+            <ion-img src="assets/img/hm-btn.png" id="homemate-icon"></ion-img>
           </ion-col>
 
           <ion-col>
             <div class="ion-text-end">
-              <ion-icon name="person" size="large" color="darkblue" [routerLink]="['/profile']"></ion-icon>
+              <ion-icon name="person" size="large" color="darkblue" [routerLink]="['/tabs/profile']"></ion-icon>
             </div>
           </ion-col>
-
-
         </ion-row>
   </ion-toolbar>
 
@@ -33,9 +31,10 @@
               <ion-icon name="options" color="darkblue" size="large"></ion-icon>
             </ion-col>
           </ion-row>
-          <ion-row >
+          <ion-row>
             <ion-col size="12" class="ion-no-padding">
-              <ion-list *ngIf="preferences != []">
+
+              <ion-list *ngIf="preferences != [] && myPreferences.type == 'offerer'">
                 <div *ngFor="let person of persons">
                 <ion-item *ngIf="checkType(person)" lines="full">
                   <ion-thumbnail item-start>
@@ -51,6 +50,30 @@
                 </ion-item>
               </div>
               </ion-list>
+
+              <ion-list *ngIf="preferences != [] && myPreferences.type == 'seeker'">
+                <div *ngFor="let residence of residences">
+                <ion-item lines="full">
+                  <ion-thumbnail item-start>
+                    <img [src]="getFirstResidenceImage(residence.id)" />
+                  </ion-thumbnail>
+                  <ion-row>
+                  <p>{{residence.name}}</p>
+                  <p class='description'>{{residence.description}}</p>
+                  </ion-row>
+
+                  <div item-end>
+                    <ion-icon name="chevron-forward-outline" color="darkblue" (click)="click(residence.id)"></ion-icon>
+                  </div>
+                </ion-item>
+              </div>
+              </ion-list>
+
+
+
+
+
+
             </ion-col>
           </ion-row>
         </div>

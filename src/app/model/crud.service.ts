@@ -182,6 +182,7 @@ export class ResidenceService {
     return this.ngFirestore.collection('residence').doc(id).valueChanges();
   }
 
+
   update(id, person: Person) {
     this.ngFirestore.collection('residence').doc(id).update(person)
       .then(() => {

@@ -4,18 +4,16 @@
         <ion-row class="ion-padding-horizontal ion-padding-vertical">
 
           <ion-col>
-            <ion-icon name="home" size="large" color="darkblue" [routerLink]="['/tabs/homepage']"></ion-icon>
+            <ion-img src="assets/img/hm-btn.png" id="homemate-icon" [routerLink]="['/tabs/homepage']"></ion-img>
           </ion-col>
           <ion-col>
             <ion-text color="darkblue" id="caps" >{{residence.address}}</ion-text>
           </ion-col>
           <ion-col>
             <div class="ion-text-end">
-              <ion-icon name="person" size="large" color="darkblue"></ion-icon>
+              <ion-icon name="person" size="large" color="darkblue" [routerLink]="['/tabs/profile']"></ion-icon>
             </div>
           </ion-col>
-
-
         </ion-row>
   </ion-toolbar>
 
@@ -54,15 +52,31 @@
                   {{residence.description}}
                 </ion-card-content>
                 
-                Startdate: {{residence.startdate |  date:'dd/mm/yy'}}
+
+                <ion-card-content class="ion-text-left">
+                  Startdate: {{residence.startdate |  date:'dd/mm/yy'}}
+                </ion-card-content>
+                
+
+                <ion-item lines="full">
+                  <ion-thumbnail item-start>
+                    <div>
+                      <img [src]="personImage.filepath" />
+                    </div>
+                  </ion-thumbnail>
+                  <p>{{person.firstname}} {{person.lastname}} </p>
+    
+                  <div item-end>
+                    <ion-icon name="mail"  color="darkblue"></ion-icon>
+                  </div>
+                </ion-item>
               </ion-card>
+
+              
             </ion-col>
+            
           </ion-row>
         </div>
-
-       
-
-
 
       </ion-col>
     </ion-row>
