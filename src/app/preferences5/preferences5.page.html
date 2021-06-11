@@ -5,7 +5,7 @@
         <ion-row class="ion-padding-horizontal ion-padding-vertical">
 
           <ion-col>
-            <ion-icon name="home" size="large" color="darkblue"></ion-icon>
+            <ion-img src="assets/img/hm-btn.png" [routerLink]="['/homepage']" id="homemate-icon"></ion-img>
           </ion-col>
           <ion-col>
             <ion-text color="darkblue" id="caps">preferences</ion-text>
@@ -34,14 +34,14 @@
             <ion-text color="grey" class="ion-padding-vertical">
               <p class="ion-padding-horizontal bold">Your interests:</p>
             </ion-text>
-           
-              
+
+
 
             <ion-item>
               <ion-input type="text" placeholder="New interest" #interest clearInput></ion-input>
               <button color="primary" solid item-right (click)="interests.push([true,interest.value])">Add</button>
             </ion-item>
-          
+
 
             <!-- <ion-grid>
               <ion-row *ngFor = "let number of ); let i = index;">
@@ -64,7 +64,7 @@
                       {{interests[i][1]}}
                     </ion-button>
                   </div>
-                  
+
               </ion-col>
               </ion-row>
             </ion-grid>

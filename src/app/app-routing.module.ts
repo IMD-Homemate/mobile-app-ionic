@@ -63,7 +63,7 @@ const routes: Routes = [
     loadChildren: () => import('./welcome-option/welcome-option.module').then( m => m.WelcomeOptionPageModule)
   },
   {
-    path: '',
+    path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
@@ -116,7 +116,7 @@ const routes: Routes = [
     loadChildren: () => import('./preferences-edit/preferences-edit.module').then( m => m.PreferencesEditPageModule)
   },
   {
-    path: 'tabs',
+    path: '',
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
   },
   {
@@ -142,7 +142,23 @@ const routes: Routes = [
   {
     path: 'walkthrough4',
     loadChildren: () => import('./walkthrough4/walkthrough4.module').then( m => m.Walkthrough4PageModule)
+  },
+  {
+    path: 'promotead',
+    loadChildren: () => import('./promotead/promotead.module').then( m => m.PromoteadPageModule)
+  },
+  {
+    path: 'promotead2',
+    loadChildren: () => import('./promotead2/promotead2.module').then( m => m.Promotead2PageModule)
+  },
+  {
+    path: 'promotead3',
+    loadChildren: () => import('./promotead3/promotead3.module').then( m => m.Promotead3PageModule)
   }
+  // {
+  //   path: 'favo',
+  //   loadChildren: () => import('./favo/favo.module').then( m => m.FavoPageModule)
+  // }
 ];
 @NgModule({
   imports: [
