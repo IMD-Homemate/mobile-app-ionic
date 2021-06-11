@@ -82,10 +82,10 @@ const routes: Routes = [
     path: 'add-person',
     loadChildren: () => import('./test-person/test-person.module').then( m => m.TestPersonPageModule)
   },
-  {
-    path: 'test-list-person',
-    loadChildren: () => import('./test-list-person/test-list-person.module').then( m => m.TestListPersonPageModule)
-  },
+  // {
+  //   path: 'test-list-person',
+  //   loadChildren: () => import('./test-list-person/test-list-person.module').then( m => m.TestListPersonPageModule)
+  // },
   {
     path: 'test-update-person/:id',
     loadChildren: () => import('./test-update-person/test-update-person.module').then( m => m.TestUpdatePersonPageModule)
