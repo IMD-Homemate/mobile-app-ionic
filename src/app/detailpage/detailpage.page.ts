@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../model/authentication-service';
 import { Person, PersonService, ProfileImage, ProfileImageService, ResidenceService } from '../model/crud.service';
 import { Residence } from '../shared/models/residence.model';
@@ -18,15 +18,14 @@ export class DetailpagePage implements OnInit {
   personImage: ProfileImage;
   person: Person;
 
-  constructor(private personService: PersonService, private router: Router,public authService : AuthenticationService, private pImageService : ProfileImageService, private residenceService: ResidenceService) { 
+  constructor(private route: ActivatedRoute,private personService: PersonService, private router: Router,public authService : AuthenticationService, private pImageService : ProfileImageService, private residenceService: ResidenceService) { 
     this.images = [];
     this.residence = [];
     this.personImage = new ProfileImage();
     this.person = new Person();
-    this.id = this.router.getCurrentNavigation().extras.state.id;
-
-    
-  
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
   }
 
   ngOnInit() {

@@ -20,12 +20,9 @@ export class PersonDetailpagePage implements OnInit {
     this.preferences = new Preferences();
     this.personImage = new ProfileImage();
     this.person = new Person();
-    this.route.queryParams.subscribe(params => {
-      if (this.router.getCurrentNavigation().extras.state) {
-        this.id = this.router.getCurrentNavigation().extras.state.id;
-      }
-    });
-    // this.id = this.router.getCurrentNavigation().extras.state.id;
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
   }
 
   ngOnInit() {
