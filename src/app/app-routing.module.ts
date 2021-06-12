@@ -146,6 +146,10 @@ const routes: Routes = [
   {
     path: 'promotead3',
     loadChildren: () => import('./promotead3/promotead3.module').then( m => m.Promotead3PageModule)
+  },
+  {
+    path: 'person-detailpage',
+    loadChildren: () => import('./person-detailpage/person-detailpage.module').then( m => m.PersonDetailpagePageModule)
   }
   // {
   //   path: 'favo',

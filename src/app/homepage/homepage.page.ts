@@ -88,7 +88,9 @@ export class HomepagePage implements OnInit {
   }
 
   click(id){
-    this.router.navigate(['/tabs/detailpage'], { state: {id: id} });
+    if (this.myPreferences.type.toString() == 'seeker') this.router.navigate(['/tabs/detailpage'], { state: {id: id} });
+    if (this.myPreferences.type.toString() == 'offerer') this.router.navigate(['/tabs/person-detailpage'], { state: {id: id} });
+    
   }
 
   checkType(person){

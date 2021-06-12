@@ -15,7 +15,7 @@
 
           <ion-card-header>
             <div class="ion-text-center">
-              <ion-text id="caps" class="big-text" color="darkblue" >{{firstname}} {{lastname}}</ion-text>
+              <ion-text id="caps" class="big-text" color="darkblue" >{{person.firstname}} {{person.lastname}}</ion-text>
             </div>
             <div class="ion-text-center">
               <ion-text color="grey">Account information</ion-text>
@@ -43,7 +43,7 @@
                 <ion-label class="ion-padding-horizontal" color="grey">Firstname</ion-label>
                 <ion-card>
                   <ion-item id="test">
-                    <ion-input type="text" name="firstname" color="grey" [(ngModel)]="firstname">
+                    <ion-input type="text" name="firstname" color="grey" [(ngModel)]="person.firstname">
                     </ion-input>
                   </ion-item>
                 </ion-card>
@@ -51,7 +51,7 @@
                 <ion-label class="ion-padding-horizontal" color="grey">Lastname</ion-label>
                 <ion-card>
                   <ion-item id="test">
-                    <ion-input type="text" name="lastname" color="grey" [(ngModel)]="lastname">
+                    <ion-input type="text" name="lastname" color="grey" [(ngModel)]="person.lastname">
                     </ion-input>
                   </ion-item>
                 </ion-card>
@@ -89,7 +89,7 @@
                 </ion-card> -->
 
                 <ion-label class="ion-padding-horizontal" color="grey">Gender</ion-label>
-                <ion-radio-group [value]="gender" (ionChange)="onOpChange($event)">
+                <ion-radio-group [value]="person.gender" (ionChange)="onOpChange($event)">
                   <ion-item>
                     <ion-label color="grey">Female</ion-label>
                     <ion-radio slot="start" value="f"></ion-radio>
@@ -109,7 +109,7 @@
                 <ion-label class="ion-padding-horizontal" color="grey">Date of birth</ion-label>
                 <ion-card color="white">
                   <ion-item id="test">
-                    <ion-datetime displayFormat="D MMM YYYY" color="grey" min="1980" max="2000" [(ngModel)]="birthdate"></ion-datetime>
+                    <ion-datetime displayFormat="D MMM YYYY" color="grey" min="1980" max="2000" [(ngModel)]="person.birthdate"></ion-datetime>
                   </ion-item>
                 </ion-card>
 

@@ -1,0 +1,61 @@
+<ion-content [fullscreen]="true">
+
+  <ion-toolbar color="lightblue">
+        <ion-row class="ion-padding-horizontal ion-padding-vertical">
+
+          <ion-col>
+            <ion-img src="assets/img/hm-btn.png" id="homemate-icon" [routerLink]="['/tabs/homepage']"></ion-img>
+          </ion-col>
+          
+          <ion-col>
+            <div class="ion-text-end">
+              <ion-icon name="person" size="large" color="darkblue" [routerLink]="['/tabs/profile']"></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+  </ion-toolbar>
+
+  <ion-grid>
+    <ion-row center>
+      <ion-col size="12">
+
+        
+        <div id="card-fullscreen">
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="12" class="ion-text-center">
+              <ion-card>
+                <ion-col>
+                  <ion-row class="ion-align-items-center ion-justify-content-center ion-padding-vertical">
+                    <ion-thumbnail>
+                      <img [src]="personImage.filepath"/>
+                    </ion-thumbnail>
+                  </ion-row>
+                    <div class="ion-text-center">
+                      <ion-text id="caps" class="big-text" color="darkblue" >{{person.firstname}} {{person.lastname}}</ion-text>
+                    </div>
+                </ion-col> 
+                
+                
+              
+                <ion-card-content class="ion-text-left">
+                  {{preferences.biography}}
+                </ion-card-content>
+                
+                <ion-card-header>Interests</ion-card-header>
+                <ion-card-content class="ion-text-left">
+                  <div *ngFor="let i of preferences.interests">{{i}}</div>
+                </ion-card-content>
+                
+              </ion-card>
+
+              
+            </ion-col>
+            
+          </ion-row>
+        </div>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
