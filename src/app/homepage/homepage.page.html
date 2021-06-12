@@ -36,7 +36,7 @@
 
               <ion-list *ngIf="preferences != [] && myPreferences.type == 'offerer'">
                 <div *ngFor="let person of persons">
-                <ion-item *ngIf="checkType(person)" lines="full">
+                <ion-item *ngIf="checkType(person)" lines="full" (click)="click(person.id)">
                   <ion-thumbnail item-start>
                     <div *ngFor="let image of images">
                       <img *ngIf="person.id == image.id" [src]="image.filepath" />
@@ -53,7 +53,7 @@
 
               <ion-list *ngIf="preferences != [] && myPreferences.type == 'seeker'">
                 <div *ngFor="let residence of residences">
-                <ion-item lines="full">
+                <ion-item lines="full" (click)="click(residence.id)">
                   <ion-thumbnail item-start>
                     <img [src]="getFirstResidenceImage(residence.id)" />
                   </ion-thumbnail>
