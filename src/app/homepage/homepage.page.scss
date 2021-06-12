@@ -26,9 +26,18 @@
 }
 
 img {
+  height: 100%;
   border-radius: 20px;
+  width: 100%;
+  background-position: center;
 }
 
 p {
   margin-left: 20px;
+  width: 90%;
+}
+
+.description {
+  margin-top: -15px;
+  font-size: 10px;
 }

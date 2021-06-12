@@ -1,0 +1,74 @@
+<ion-content [fullscreen]="true">
+
+  <ion-toolbar color="lightblue">
+        <ion-row class="ion-padding-horizontal ion-padding-vertical">
+
+          <ion-col>
+            <ion-img src="assets/img/hm-btn.png" [routerLink]="['/tabs/homepage']" id="homemate-icon"></ion-img>
+          </ion-col>
+
+          <ion-col>
+            <ion-text color="darkblue" id="caps">Favorites</ion-text>
+          </ion-col>
+
+          <ion-col>
+            <div class="ion-text-end">
+              <ion-icon name="person" size="large" color="darkblue"></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+  </ion-toolbar>
+
+
+
+  <ion-grid>
+    <ion-row center>
+      <ion-col size="12">
+
+
+          <ion-card-content class="bg-color ion-padding-vertical">
+
+            <ion-list id="test" class="to-bottom2">
+
+              <!-- DIT IS EEN VOLLEDIG ITEM -->
+              <ion-item>
+                <ion-grid size="12">
+                  <ion-row>
+                    <ion-col size="2">
+                      <div>
+                        <img src="assets/img/dummydata_apartment1.jpg">
+                      </div>
+                    </ion-col>
+                    <ion-col size="9">
+                      <ion-row>
+                        <ion-text color="grey" class="streetname-title">
+                          <p>Guidogazellestraat 56</p>
+                        </ion-text>
+                      </ion-row>
+                      <ion-row>
+                        <ion-text color="grey">
+                          <p>Leuven, Vlaams-Brabant</p>
+                        </ion-text>
+                      </ion-row>
+                    </ion-col>
+                    <ion-col size="1">
+                      <ion-icon name="chevron-forward-outline" size="large" color="darkblue"></ion-icon>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+              <!-- HIER ONDER KOMEN VOLGENDE ITEMS -->
+
+
+
+            </ion-list>
+
+
+
+          </ion-card-content>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

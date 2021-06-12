@@ -9,7 +9,7 @@ import { AuthenticationService } from './authentication-service';
 export interface MyData {
   name: string;
   filepath: string;
-  // uid: string;
+  uuid: string;
 }
 
 @Injectable({
@@ -35,6 +35,8 @@ export class ImageService {
   //File details  
   fileName:string;
 
+  id : string;
+
   //Status check 
   isUploading:boolean;
   isUploaded:boolean;
@@ -42,13 +44,14 @@ export class ImageService {
   private imageCollection: AngularFirestoreCollection<MyData>;
   constructor(private storage: AngularFireStorage, private database: AngularFirestore, private authService: AuthenticationService) {
     //Set collection where our documents/ images info will save
-    this.imageCollection = database.collection<MyData>('profileImages');
-    this.images = this.imageCollection.valueChanges();
+    // this.imageCollection = database.collection<MyData>('profileImages');
+    // this.images = this.imageCollection.valueChanges();
   }
 
 
-  async uploadFile(event: FileList){
-    
+  async uploadFile(event: FileList, typeOfDatabase: string){
+    this.imageCollection = this.database.collection<MyData>(typeOfDatabase);
+    this.images = this.imageCollection.valueChanges();
 
     // The File object
     const file = event.item(0)
@@ -63,7 +66,7 @@ export class ImageService {
     this.fileName = file.name;
 
     // The storage path
-    const path = `profileImages/${new Date().getTime()}_${file.name}`;
+    const path = `${typeOfDatabase}/${new Date().getTime()}_${file.name}`;
 
     // Totally optional metadata
     const customMetadata = { app: 'Freaky Image Upload Demo' };
@@ -83,24 +86,36 @@ export class ImageService {
       this.addImagetoDB({
         name: file.name,
         filepath: resp,
-        // uid: this.authService.uuid
-      });
+        uuid: this.authService.uuid
+      }, typeOfDatabase);
     },error=>{
       console.error(error);
     })}
   );
   }
 
-  addImagetoDB(image: MyData) {
+  addImagetoDB(image: MyData, typeOfDatabase: string) {
     //Create an ID for document
     // const id = this.database.createId();
-    const id = this.authService.uuid;
-    //Set document id with value in database
-    this.imageCollection.doc(id).set(image).then(resp => {
-      console.log(resp);
-    }).catch(error => {
-      console.log("error " + error);
-    });
+    
+    if (typeOfDatabase == 'profileImages'){
+      this.id = this.authService.uuid;
+      //Set document id with value in database
+      this.imageCollection.doc(this.id).set(image).then(resp => {
+        console.log(resp);
+      }).catch(error => {
+        console.log("error " + error);
+      });
+    }
+    if (typeOfDatabase == 'residenceImages'){
+      this.id = this.database.createId();
+      //Set document id with value in database
+      this.imageCollection.doc(this.id).set(image).then(resp => {
+        console.log(resp);
+      }).catch(error => {
+        console.log("error " + error);
+      });
+    }
   }
 
 

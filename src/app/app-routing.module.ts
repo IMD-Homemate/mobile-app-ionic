@@ -63,7 +63,7 @@ const routes: Routes = [
     loadChildren: () => import('./welcome-option/welcome-option.module').then( m => m.WelcomeOptionPageModule)
   },
   {
-    path: '',
+    path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
@@ -82,10 +82,10 @@ const routes: Routes = [
     path: 'add-person',
     loadChildren: () => import('./test-person/test-person.module').then( m => m.TestPersonPageModule)
   },
-  {
-    path: 'test-list-person',
-    loadChildren: () => import('./test-list-person/test-list-person.module').then( m => m.TestListPersonPageModule)
-  },
+  // {
+  //   path: 'test-list-person',
+  //   loadChildren: () => import('./test-list-person/test-list-person.module').then( m => m.TestListPersonPageModule)
+  // },
   {
     path: 'test-update-person/:id',
     loadChildren: () => import('./test-update-person/test-update-person.module').then( m => m.TestUpdatePersonPageModule)
@@ -116,16 +116,8 @@ const routes: Routes = [
     loadChildren: () => import('./preferences-edit/preferences-edit.module').then( m => m.PreferencesEditPageModule)
   },
   {
-    path: 'tabs',
+    path: '',
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
-  },
-  {
-    path: 'tab1',
-    loadChildren: () => import('./tab1/tab1.module').then( m => m.Tab1PageModule)
-  },
-  {
-    path: 'tab2',
-    loadChildren: () => import('./tab2/tab2.module').then( m => m.Tab2PageModule)
   },
   {
     path: 'walkthrough',
@@ -142,7 +134,27 @@ const routes: Routes = [
   {
     path: 'walkthrough4',
     loadChildren: () => import('./walkthrough4/walkthrough4.module').then( m => m.Walkthrough4PageModule)
+  },
+  {
+    path: 'promotead',
+    loadChildren: () => import('./promotead/promotead.module').then( m => m.PromoteadPageModule)
+  },
+  {
+    path: 'promotead2',
+    loadChildren: () => import('./promotead2/promotead2.module').then( m => m.Promotead2PageModule)
+  },
+  {
+    path: 'promotead3',
+    loadChildren: () => import('./promotead3/promotead3.module').then( m => m.Promotead3PageModule)
+  },
+  {
+    path: 'person-detailpage',
+    loadChildren: () => import('./person-detailpage/person-detailpage.module').then( m => m.PersonDetailpagePageModule)
   }
+  // {
+  //   path: 'favo',
+  //   loadChildren: () => import('./favo/favo.module').then( m => m.FavoPageModule)
+  // }
 ];
 @NgModule({
   imports: [

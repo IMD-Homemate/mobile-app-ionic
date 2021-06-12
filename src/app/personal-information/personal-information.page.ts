@@ -19,7 +19,7 @@ export class PersonalInformationPage implements OnInit {
   email: string;
   birthdate: string;
   gender: string;
-  p:Person;
+  person :Person;
   imageEvent: any;
   photo: any;
 
@@ -29,41 +29,27 @@ export class PersonalInformationPage implements OnInit {
               private personService: PersonService,
               private imageService: ImageService,
               ) {
-                
+       this.person = new Person();
    }
 
   ngOnInit() {
-    // this.pImageService.getProfileImage(this.authService.uuid).subscribe((data) => {
-    //   this.url = data['filepath'];
-    // });
     this.personService.getPerson(this.authService.uuid).subscribe((data) => {
-      this.firstname = data['firstname'];
-      this.lastname = data['lastname'];
-      this.birthdate = data['birthdate'];
-      this.gender = data['gender'];
+      this.person = data as Person;
     });
   }
 
   onOpChange($event) {
-    this.gender = $event.target.value;
+    this.person.gender = $event.target.value;
   }
 
   async updateImageURL($event){
     this.imageEvent = $event;
-    this.pImageService.delete(this.authService.uuid);
-    await this.imageService.uploadFile(this.imageEvent);
+    this.pImageService.deleteProfileImage(this.authService.uuid);
+    await this.imageService.uploadFile(this.imageEvent, 'profileImages');
   }
 
   async save(){
-    this.p = {
-      firstname: this.firstname,
-      lastname: this.lastname,
-      gender: this.gender,
-      birthdate: this.birthdate,
-      uuid: this.authService.uuid
-    }
-
-    this.personService.update(this.authService.uuid, this.p);
+    this.personService.update(this.authService.uuid, this.person);
     this.router.navigate(['/profile']);
   }
   

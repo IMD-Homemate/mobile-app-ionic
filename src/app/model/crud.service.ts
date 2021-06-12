@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
 import { Preferences } from '../shared/models/preferences.model';
+import { Residence } from '../shared/models/residence.model';
 import { AuthenticationService } from './authentication-service';
 
 export class Person {
@@ -99,6 +100,7 @@ export class ProfileImage {
   $key?: string;
   filepath: string;
   name: string;
+  uuid: string;
 }
 
 
@@ -119,6 +121,10 @@ export class ProfileImageService {
   getProfileImages() {
     return this.ngFirestore.collection('profileImages').snapshotChanges();
   }
+
+  getResidenceImages() {
+    return this.ngFirestore.collection('residenceImages').snapshotChanges();
+  }
   
   getProfileImage(id) {
     return this.ngFirestore.collection('profileImages').doc(id).valueChanges();
@@ -132,8 +138,60 @@ export class ProfileImageService {
   //     }).catch(error => console.log(error));;
   // }
 
-  delete(id: string) {
+  deleteProfileImage(id: string) {
     this.ngFirestore.doc('profileImages/' + id).delete();
+  }
+
+  deleteResidenceImage(id: string) {
+    this.ngFirestore.doc('residenceImages/' + id).delete();
+  }
+
+  
+
+}
+
+
+
+
+
+
+
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class ResidenceService {
+
+  constructor(
+    private ngFirestore: AngularFirestore,
+    private router: Router,
+    private authService: AuthenticationService
+  ) { }
+
+  create(residence: Residence) {
+    const id = this.authService.uuid;
+    return this.ngFirestore.collection('residence').doc(id).set(residence);
+  }
+
+  getResidences() {
+    return this.ngFirestore.collection('residence').snapshotChanges();
+  }
+  
+  getResidence(id) {
+    return this.ngFirestore.collection('residence').doc(id).valueChanges();
+  }
+
+
+  update(id, person: Person) {
+    this.ngFirestore.collection('residence').doc(id).update(person)
+      .then(() => {
+        // this.router.navigate(['/test-list-person']);
+      }).catch(error => console.log(error));;
+  }
+
+  delete(id: string) {
+    this.ngFirestore.doc('residence/' + id).delete();
   }
 
 }

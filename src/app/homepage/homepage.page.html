@@ -4,16 +4,14 @@
         <ion-row class="ion-padding-horizontal ion-padding-vertical">
 
           <ion-col>
-            <ion-icon name="home" size="large" color="darkblue"></ion-icon>
+            <ion-img src="assets/img/hm-btn.png" id="homemate-icon"></ion-img>
           </ion-col>
-    
+
           <ion-col>
             <div class="ion-text-end">
-              <ion-icon name="person" size="large" color="darkblue" [routerLink]="['/profile']"></ion-icon>
+              <ion-icon name="person" size="large" color="darkblue" [routerLink]="['/tabs/profile']"></ion-icon>
             </div>
           </ion-col>
-
-
         </ion-row>
   </ion-toolbar>
 
@@ -28,23 +26,54 @@
             </ion-col>
             <ion-col size="6" class="ion-text-center">
               <ion-button shape="round" class="btn-location" color="darkblue"><p>Location</p></ion-button>
-            </ion-col>  
+            </ion-col>
             <ion-col size="3" class="ion-text-center">
               <ion-icon name="options" color="darkblue" size="large"></ion-icon>
             </ion-col>
           </ion-row>
-          <ion-row >
+          <ion-row>
             <ion-col size="12" class="ion-no-padding">
-              <ion-list>
-                <ion-item *ngFor="let person of persons" lines="full" [routerLink]="['/detailpage']">
+
+              <ion-list *ngIf="preferences != [] && myPreferences.type == 'offerer'">
+                <div *ngFor="let person of persons">
+                <ion-item *ngIf="checkType(person)" lines="full">
                   <ion-thumbnail item-start>
                     <div *ngFor="let image of images">
                       <img *ngIf="person.id == image.id" [src]="image.filepath" />
                     </div>
                   </ion-thumbnail>
                   <p >{{person.firstname}} {{person.lastname}}</p>
+
+                  <div item-end>
+                    <ion-icon name="chevron-forward-outline" (click)="click(person.id)" color="darkblue"></ion-icon>
+                  </div>
                 </ion-item>
+              </div>
               </ion-list>
+
+              <ion-list *ngIf="preferences != [] && myPreferences.type == 'seeker'">
+                <div *ngFor="let residence of residences">
+                <ion-item lines="full">
+                  <ion-thumbnail item-start>
+                    <img [src]="getFirstResidenceImage(residence.id)" />
+                  </ion-thumbnail>
+                  <ion-row>
+                  <p>{{residence.name}}</p>
+                  <p class='description'>{{residence.description}}</p>
+                  </ion-row>
+
+                  <div item-end>
+                    <ion-icon name="chevron-forward-outline" color="darkblue" (click)="click(residence.id)"></ion-icon>
+                  </div>
+                </ion-item>
+              </div>
+              </ion-list>
+
+
+
+
+
+
             </ion-col>
           </ion-row>
         </div>

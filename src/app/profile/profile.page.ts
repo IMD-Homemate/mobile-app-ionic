@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '../model/authentication-service';
 import { ProfileImageService, PersonService } from '../model/crud.service';
 
@@ -13,16 +14,13 @@ export class ProfilePage implements OnInit {
   firstname: string;
   lastname: string;
 
-  constructor(private authService :AuthenticationService, private pImageService : ProfileImageService, private personService: PersonService) {
+  constructor(private router: Router,private authService :AuthenticationService, private pImageService : ProfileImageService, private personService: PersonService) {
     
   }
 
   
 
   ngOnInit() {
-    // this.pImageService.getProfileImage(this.authService.uuid).subscribe((data) => {
-    //   this.url = data['filepath'];
-    // });
     this.personService.getPerson(this.authService.uuid).subscribe((data) => {
       this.firstname = data['firstname'];
       this.lastname = data['lastname'];
@@ -33,6 +31,15 @@ export class ProfilePage implements OnInit {
     this.pImageService.getProfileImage(this.authService.uuid).subscribe((data) => {
       this.url = data['filepath'];
     });
+  }
+
+  logout() {
+    this.authService.signOut()
+      .then((res) => {
+          this.router.navigate(['/login']);          
+      }).catch((error) => {
+        window.alert(error.message)
+      })
   }
   
 }

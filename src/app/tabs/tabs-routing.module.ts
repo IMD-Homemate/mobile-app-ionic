@@ -9,18 +9,59 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+        path: 'preferences1',
+        loadChildren: () => import('../preferences1/preferences1.module').then(m => m.Preferences1PageModule)
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
-      }
+        path: 'homepage',
+        loadChildren: () => import('../homepage/homepage.module').then(m => m.HomepagePageModule)
+      },
+      {
+        path: 'preferences2',
+        loadChildren: () => import('../preferences2/preferences2.module').then(m => m.Preferences2PageModule)
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule)
+      },
+      {
+        path: 'detailpage',
+        loadChildren: () => import('../detailpage/detailpage.module').then(m => m.DetailpagePageModule)
+      },
+      {
+        path: 'favo',
+        loadChildren: () => import('../favo/favo.module').then(m => m.FavoPageModule)
+      },
+      {
+        path: 'promotead',
+        loadChildren: () => import('../promotead/promotead.module').then(m => m.PromoteadPageModule)
+      },
+      {
+        path: 'promotead2',
+        loadChildren: () => import('../promotead2/promotead2.module').then(m => m.Promotead2PageModule)
+      },
+      {
+        path: 'promotead3',
+        loadChildren: () => import('../promotead3/promotead3.module').then(m => m.Promotead3PageModule)
+      },
+      {
+        path: 'settings',
+        loadChildren: () => import('../settings/settings.module').then(m => m.SettingsPageModule)
+      },
+      {
+        path: 'chat',
+        loadChildren: () => import('../test-list-person/test-list-person.module').then( m => m.TestListPersonPageModule)
+      },
+      {
+        path: 'person-detailpage',
+        loadChildren: () => import('../person-detailpage/person-detailpage.module').then( m => m.PersonDetailpagePageModule)
+      },
+
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/homepage',
     pathMatch: 'full'
   }
 ];
