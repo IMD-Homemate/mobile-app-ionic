@@ -80,8 +80,8 @@ export class PreferencesService {
     return this.ngFirestore.collection('preferences').doc(id).valueChanges();
   }
 
-  update(id, person: Person) {
-    this.ngFirestore.collection('preferences').doc(id).update(person)
+  update(id, preference: Preferences) {
+    this.ngFirestore.collection('preferences').doc(id).update(preference)
       .then(() => {
         this.router.navigate(['/test-list-person']);
       }).catch(error => console.log(error));;
