@@ -3,11 +3,11 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ng-container *ngIf="receiverPerson | async as res">
-      <ion-title>{{res.firstname}} {{res.lastname}}</ion-title>
-  </ng-container>
-    
-    
+          <ng-container *ngIf="receiverPerson | async as res">
+      
+            <ion-title>{{res.firstname}} {{res.lastname}}</ion-title>
+          </ng-container>
+
   </ion-toolbar>
 </ion-header>
  

@@ -67,7 +67,7 @@
                   <p>{{person.firstname}} {{person.lastname}} </p>
     
                   <div item-end>
-                    <ion-icon name="mail"  color="darkblue"></ion-icon>
+                    <ion-icon name="mail"  color="darkblue" (click)="next(person.uuid)"></ion-icon>
                   </div>
                 </ion-item>
               </ion-card>

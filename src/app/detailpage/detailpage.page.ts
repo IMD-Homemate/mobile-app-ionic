@@ -55,4 +55,8 @@ export class DetailpagePage implements OnInit {
     });
   }
 
+  next(id){
+    this.router.navigate(['chat'], { state: {id: id} });
+  }
+
 }
