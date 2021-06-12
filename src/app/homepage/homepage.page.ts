@@ -33,6 +33,7 @@ export class HomepagePage implements OnInit {
   constructor(private authService :AuthenticationService, private residenceService: ResidenceService,private pImageService : ProfileImageService, private personService: PersonService, private preferencesService: PreferencesService, private router: Router) { 
     this.preferences = this.images = this.persons = this.preferences = this.residences = this.residenceImages = [];
     this.myPreferences = new Preferences();
+    // if (this.authService.uuid == undefined) this.router.navigate(['/login']);
   }
 
   ngOnInit() {  
@@ -79,12 +80,11 @@ export class HomepagePage implements OnInit {
           ...t.payload.doc.data() as Preferences
         };
       })
+      this.preferences = [];
       this.tempPref.forEach(pref => {
         if (this.myPreferences.type != pref.type) this.preferences.push(pref.uuid);
       });
-    });
-
-    
+    });    
   }
 
   click(id){
