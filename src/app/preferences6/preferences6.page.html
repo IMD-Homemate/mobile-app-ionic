@@ -102,10 +102,9 @@
               <input type="file" name="img" (change)="imageService.uploadFile($event.target.files, 'residenceImages');" accept="image/*">
             </ion-item>
 
-            <ion-list *ngIf="images == defined">
+            <ion-list *ngIf="images.length != 0">
               <div *ngFor="let image of images">
-              <ion-item *ngIf="authService.uuid == image.uuid" lines="full">
-                
+              <ion-item lines="full">
                 <ion-thumbnail item-start>
                     <img [src]="image.filepath" />
                 </ion-thumbnail>
@@ -131,7 +130,9 @@
               <ion-col>
                 <div class="ion-text-start">
                   <ion-button color="white" class="ion-padding-vertical">
-                    <ion-text color="grey" [routerLink]="['/preferences5']">
+                    <!-- <ion-text color="grey" [routerLink]="['/preferences5']"> -->
+                      <ion-text color="grey" (click)="test()">
+
                       <p color="grey">Back</p>
                     </ion-text>
                   </ion-button>
