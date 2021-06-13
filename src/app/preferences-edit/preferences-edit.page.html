@@ -15,7 +15,7 @@
 
           <ion-card-header>
             <div class="ion-text-center">
-              <ion-text id="caps" class="big-text" color="darkblue" >{{firstname}} {{lastname}}</ion-text>
+              <ion-text id="caps" class="big-text" color="darkblue" >{{person.firstname}} {{person.lastname}}</ion-text>
             </div>
             <div class="ion-text-center">
               <ion-text color="grey">Edit your preferences here</ion-text>
@@ -27,8 +27,8 @@
 
               <ion-list id="test">
 
-                <!-- SEEKER /OFFERER -->
-                <ion-row class="ion-padding-vertical">
+                <!-- SEEKER /OFFERER Momenteel niet aan te passen -->
+                <!-- <ion-row class="ion-padding-vertical">
                   <ion-label class="ion-padding-horizontal bold" color="grey">1. What describes you the best?</ion-label>
                   <ion-list color="grey" id="test">
                     <ion-radio-group [value]="preferences.type">
@@ -50,7 +50,7 @@
 
                     </ion-radio-group>
                   </ion-list>
-                </ion-row>
+                </ion-row> -->
 
                 <!-- QUESTIONS USER -->
                 <ion-row class="ion-padding-vertical">
@@ -102,8 +102,8 @@
 
               <!-- INTERESTS -->
 
-              <ion-label class=" bold" color="grey">Your interests</ion-label>
-              <!-- HIER KOMEN DIE INTERESTS -->
+              <!-- <ion-label class=" bold" color="grey">Your interests</ion-label>
+              HIER KOMEN DIE INTERESTS -->
               <ion-grid>
                 <ion-row>
                 </ion-row>
@@ -149,68 +149,79 @@
 
               <!-- SHOW WHEN SEEKER -->
               <!-- <ion-row class="ion-padding-vertical"> -->
-                <ion-label class="bold ion-padding-vertical" color="grey">Tell something more about yourself!</ion-label>
+                <div *ngIf = "preferences.type == 'seeker'">
 
-                <ion-text color="grey">
-                  <p class="ion-padding-vertical">
-                    Why do you want to do cohousing? What do you (dis)like? Is something important to know?
+                  <ion-label class="bold ion-padding-vertical" color="grey">Tell something more about yourself!</ion-label>
+                  <ion-text color="grey">
+                    <p class="ion-padding-vertical">
+                      Why do you want to do cohousing? What do you (dis)like? Is something important to know?
+                    </p>
+                  </ion-text>
+
+                  <ion-item class="ion-padding-vertical" color="white border-txt" >
+                    <ion-textarea color="grey">{{preferences.biography}}</ion-textarea>
+                  </ion-item>
+                
+                </div>
+
+              <!-- SHOW WHEN OFFERER -->
+              <br>
+              <div *ngIf="preferences.type == 'offerer'">
+                <ion-label class="bold ion-padding-vertical" color="grey">How do you want to name your place?</ion-label>
+    
+                <ion-item class="ion-padding-vertical" color="white border-txt">
+                  <ion-textarea color="grey" [(ngModel)]="residence.name"></ion-textarea>
+                </ion-item>
+                
+                <br>
+                <ion-label class="bold ion-padding-vertical" color="grey">Tell something more about your cohousing situation!</ion-label>
+
+                <ion-text color="grey" class="ion-padding-vertical">
+                  <p class="ion-padding-horizontal  ion-padding-vertical">
+                    How many people are you? What do you like? What is important in your house?
                   </p>
                 </ion-text>
 
-                <ion-item class="ion-padding-vertical" color="white border-txt" >
-                  <ion-textarea color="grey" value="I'm searching for a place for me and my cat. I like to live with max 3 other people."></ion-textarea>
+                <ion-item class="ion-padding-vertical" color="white border-txt">
+                  <ion-textarea color="grey" [(ngModel)]="residence.description"></ion-textarea>
                 </ion-item>
 
+                <ion-text color="grey" class="ion-padding-vertical">
+                  <p class="ion-padding-horizontal ion-padding-vertical bold">Available from:</p>
+                </ion-text>
+                <ion-card color="white">
+                  <ion-item id="test">
+                    <ion-datetime displayFormat="D MMM YYYY" color="grey" max="2023"  min="2021" [(ngModel)]="residence.startdate"></ion-datetime>
+                  </ion-item>
+                </ion-card>
 
-              <!-- SHOW WHEN OFFERER -->
-
-              <ion-label class="bold ion-padding-vertical" color="grey">Tell something more about your cohousing situation!</ion-label>
-
-              <ion-text color="grey" class="ion-padding-vertical">
-                <p class="ion-padding-horizontal  ion-padding-vertical">
-                  How many people are you? What do you like? What is important in your house?
-                </p>
-              </ion-text>
-
-              <ion-item class="ion-padding-vertical" color="white border-txt">
-                <ion-textarea color="grey" value="I want to live together with clean people who like to drink a glass of wine in the evening."></ion-textarea>
-              </ion-item>
-
-              <ion-text color="grey" class="ion-padding-vertical">
-                <p class="ion-padding-horizontal ion-padding-vertical bold">Available from:</p>
-              </ion-text>
-              <ion-card color="white">
-                <ion-item id="test">
-                  <ion-datetime displayFormat="D MMM YYYY" color="grey" max="2023"  min="2021" value="2021-06-17"></ion-datetime>
+                <ion-text color="grey" class="ion-padding-vertical">
+                  <p class="ion-padding-horizontal ion-padding-vertical bold">What is the address of your property?</p>
+                </ion-text>
+                <ion-item class="ion-padding-vertical" color="white border-txt">
+                  <ion-textarea color="grey" [(ngModel)]="residence.address"></ion-textarea>
                 </ion-item>
+
+                <ion-text color="grey" class="ion-padding-vertical">
+                  <p class="ion-padding-horizontal ion-padding-vertical bold">Pictures of your property and homemates:</p>
+                </ion-text>
+                <ion-item color="white">
+                  <input type="file" name="img">
+                </ion-item>
+
+                <ion-text color="grey" class="ion-padding-vertical">
+                  <p class="ion-padding-horizontal ion-padding-vertical bold">What is the amount of money your new homemate needs to contribute to pay the rent? (All incl.)</p>
+                </ion-text>
+                <ion-card color="white">
+                  <ion-item id="test">
+                    <ion-textarea color="grey" [(ngModel)]="residence.price">€ </ion-textarea>
+                  </ion-item>
               </ion-card>
-
-              <ion-text color="grey" class="ion-padding-vertical">
-                <p class="ion-padding-horizontal ion-padding-vertical bold">What is the address of your property?</p>
-              </ion-text>
-              <ion-item class="ion-padding-vertical" color="white border-txt">
-                <ion-textarea color="grey" value="Stationstraat 15, 2000 Antwerpen"></ion-textarea>
-              </ion-item>
-
-              <ion-text color="grey" class="ion-padding-vertical">
-                <p class="ion-padding-horizontal ion-padding-vertical bold">Pictures of your property and homemates:</p>
-              </ion-text>
-              <ion-item color="white">
-                <input type="file" name="img">
-              </ion-item>
-
-              <ion-text color="grey" class="ion-padding-vertical">
-                <p class="ion-padding-horizontal ion-padding-vertical bold">What is the amount of money your new homemate needs to contribute to pay the rent? (All incl.)</p>
-              </ion-text>
-              <ion-card color="white">
-                <ion-item id="test">
-                  <ion-textarea color="grey">€550</ion-textarea>
-                </ion-item>
-              </ion-card>
+            </div>
 
                 <ion-col>
                   <div class="ion-text-end">
-                    <ion-button shape="round" class="btn-small" color="light-lightblue"><p>Save</p></ion-button>
+                    <ion-button shape="round" class="btn-small" color="light-lightblue" (click)="save()"><p>Save</p></ion-button>
                   </div>
                 </ion-col>
 
