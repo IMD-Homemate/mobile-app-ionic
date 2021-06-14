@@ -40,4 +40,8 @@ export class PersonDetailpagePage implements OnInit {
     });
   }
 
+  back(){
+    this.router.navigate(['/tabs/detailpage', { id: this.id }])
+  }
+
 }

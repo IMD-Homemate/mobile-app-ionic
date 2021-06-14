@@ -1,18 +1,21 @@
 <ion-content [fullscreen]="true">
 
   <ion-toolbar color="lightblue">
-        <ion-row class="ion-padding-horizontal ion-padding-vertical">
+    <ion-buttons slot="start" *ngIf="preferences.type == 'offerer'">
+      <ion-back-button (click)="back()">hello</ion-back-button>
+    </ion-buttons>
+    <ion-row class="ion-padding-horizontal ion-padding-vertical">
 
-          <ion-col>
-            <ion-img src="assets/img/hm-btn.png" id="homemate-icon" [routerLink]="['/tabs/homepage']"></ion-img>
-          </ion-col>
-          
-          <ion-col>
-            <div class="ion-text-end">
-              <ion-icon name="person" size="large" color="darkblue" [routerLink]="['/tabs/profile']"></ion-icon>
-            </div>
-          </ion-col>
-        </ion-row>
+      <ion-col *ngIf="preferences.type == 'seeker'">
+        <ion-img src="assets/img/hm-btn.png" id="homemate-icon" [routerLink]="['/tabs/homepage']"></ion-img>
+      </ion-col>
+      
+      <ion-col>
+        <div class="ion-text-end">
+          <ion-icon name="person" size="large" color="darkblue" [routerLink]="['/tabs/profile']"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
 
   <ion-grid>
@@ -22,8 +25,10 @@
         
         <div id="card-fullscreen">
           <ion-row class="ion-justify-content-center">
+            
             <ion-col size="12" class="ion-text-center">
               <ion-card>
+                
                 <ion-col>
                   <ion-row class="ion-align-items-center ion-justify-content-center ion-padding-vertical">
                     <ion-thumbnail>

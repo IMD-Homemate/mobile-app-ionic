@@ -59,15 +59,15 @@
                 
 
                 <ion-item lines="full">
-                  <ion-thumbnail item-start>
+                  <ion-thumbnail item-start (click)="toPerson(person.uuid)">
                     <div>
                       <img [src]="personImage.filepath" />
                     </div>
                   </ion-thumbnail>
-                  <p>{{person.firstname}} {{person.lastname}} </p>
+                  <p (click)="toPerson(person.uuid)">{{person.firstname}} {{person.lastname}} </p>
     
-                  <div item-end>
-                    <ion-icon name="mail"  color="darkblue" (click)="next(person.uuid)"></ion-icon>
+                  <div item-end (click)="next(person.uuid)">
+                    <ion-icon name="mail"  color="darkblue"></ion-icon>
                   </div>
                 </ion-item>
               </ion-card>
