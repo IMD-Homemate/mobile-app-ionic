@@ -186,7 +186,6 @@ export class ResidenceService {
   update(id, residence: Residence) {
     this.ngFirestore.collection('residence').doc(id).update(residence)
       .then(() => {
-         this.router.navigate(['/preferences-edit']);
       }).catch(error => console.log(error));;
   }
 
