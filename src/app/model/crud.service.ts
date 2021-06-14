@@ -81,10 +81,10 @@ export class PreferencesService {
     return this.ngFirestore.collection('preferences').doc(id).valueChanges();
   }
 
-  update(id, person: Person) {
-    this.ngFirestore.collection('preferences').doc(id).update(person)
+  update(id, preference: Preferences) {
+    this.ngFirestore.collection('preferences').doc(id).update(preference)
       .then(() => {
-        this.router.navigate(['/test-list-person']);
+        this.router.navigate(['/preferences-edit']);
       }).catch(error => console.log(error));;
   }
 
@@ -183,10 +183,10 @@ export class ResidenceService {
   }
 
 
-  update(id, person: Person) {
-    this.ngFirestore.collection('residence').doc(id).update(person)
+  update(id, residence: Residence) {
+    this.ngFirestore.collection('residence').doc(id).update(residence)
       .then(() => {
-        // this.router.navigate(['/test-list-person']);
+         this.router.navigate(['/preferences-edit']);
       }).catch(error => console.log(error));;
   }
 
