@@ -18,12 +18,12 @@
   </ion-toolbar>
 
   <ion-grid>
-    <ion-row center>
-      <ion-col size="12">
+    <ion-row center >
+      <ion-col size="12"  id="test">
 
-        
+
         <div id="card-fullscreen">
-          <ion-row class="ion-justify-content-center">
+          <!-- <ion-row class="ion-justify-content-center"> -->
             <ion-col size="12" class="ion-text-center">
               <ion-card>
                 <ion-slides pager>
@@ -33,7 +33,7 @@
                     </ion-slide>
                   <!-- </div> -->
                 </ion-slides>
-                
+
                 <ion-card-header>
                   <ion-row>
                     <ion-col size="6">
@@ -43,39 +43,39 @@
                       <ion-card-title class="ion-text-end">Prijs: € {{residence.price}}</ion-card-title>
                     </ion-col>
                   </ion-row>
-                  
+
                   <ion-card-subtitle class="ion-text-start">{{residence.address}}</ion-card-subtitle>
-                  
+
                 </ion-card-header>
-              
+
                 <ion-card-content class="ion-text-left">
                   {{residence.description}}
                 </ion-card-content>
-                
+
 
                 <ion-card-content class="ion-text-left">
                   Startdate: {{residence.startdate |  date:'dd/mm/yy'}}
                 </ion-card-content>
-                
 
-                <ion-item lines="full">
-                  <ion-thumbnail item-start>
+
+                <ion-item lines="full" class="ion-padding-vertical">
+                  <ion-thumbnail item-start (click)="toPerson(person.uuid)">
                     <div>
                       <img [src]="personImage.filepath" />
                     </div>
                   </ion-thumbnail>
-                  <p>{{person.firstname}} {{person.lastname}} </p>
-    
-                  <div item-end>
-                    <ion-icon name="mail"  color="darkblue" (click)="next(person.uuid)"></ion-icon>
+                  <p (click)="toPerson(person.uuid)">{{person.firstname}} {{person.lastname}} </p>
+
+                  <div item-end (click)="next(person.uuid)">
+                    <ion-icon name="mail"  color="darkblue"></ion-icon>
                   </div>
                 </ion-item>
               </ion-card>
 
-              
+
             </ion-col>
-            
-          </ion-row>
+
+          <!-- </ion-row> -->
         </div>
 
       </ion-col>

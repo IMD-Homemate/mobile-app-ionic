@@ -59,4 +59,8 @@ export class DetailpagePage implements OnInit {
     this.router.navigate(['chat'], { state: {id: id} });
   }
 
+  toPerson(id){
+    this.router.navigate(['/tabs/person-detailpage', {id: id}])
+  }
+
 }
