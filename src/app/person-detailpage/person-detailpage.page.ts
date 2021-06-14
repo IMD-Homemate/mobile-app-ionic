@@ -36,6 +36,7 @@ export class PersonDetailpagePage implements OnInit {
 
     this.preferencesService.getPreference(this.id).subscribe((data) => {
       this.preferences = data as Preferences;
+      console.log(this.preferences);
     });
   }
 
