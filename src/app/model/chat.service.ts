@@ -5,7 +5,7 @@ import * as firebase from 'firebase/app';
 import { switchMap, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from './authentication-service';
-import { Person } from './crud.service';
+import { Person, ProfileImageService } from './crud.service';
 
 export interface Message {
   createdAt: Date;
@@ -23,8 +23,9 @@ export interface Message {
 export class ChatService {
 
   currentUser: any;
+  url:string;
 
-  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private authService: AuthenticationService) {
+  constructor(private pImageService: ProfileImageService,private afAuth: AngularFireAuth, private afs: AngularFirestore, private authService: AuthenticationService) {
     this.currentUser = this.authService.uuid;
   }
 
@@ -37,6 +38,14 @@ export class ChatService {
       to
     });
   }
+
+  getMessages() {
+    return this.afs.collection('messages').snapshotChanges();
+  }
+  
+  
+
+
    
   getChatMessages() {
     let users = [];

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PersonService } from './../model/crud.service';
+import { Observable } from 'rxjs';
+import { AuthenticationService } from '../model/authentication-service';
+import { ChatService, Message } from '../model/chat.service';
+import { PersonService, ProfileImage, ProfileImageService } from '../model/crud.service';
 
 export class Person {
   $key: string;
@@ -21,17 +24,55 @@ export class Person {
 export class TestListPersonPage implements OnInit {
 
   persons: Person[];
+  tempPersons: any[];
+  messages: Message[];
+  ids: string[];
+  images: ProfileImage[];
 
-  constructor(private crudService: PersonService, private router: Router) { }
+  constructor(private imageService:ProfileImageService, private crudService: PersonService, private router: Router, private chatService: ChatService, private authService: AuthenticationService) {
+    this.tempPersons = [];
+    this.persons = [];
+    this.messages = [];
+    this.ids = [];
+    this.images = [];
+   }
+   
 
   ngOnInit() {
-    this.crudService.getPersons().subscribe((res) => {
-      this.persons = res.map((t) => {
+    this.imageService.getProfileImages().subscribe((data) => {
+      this.images = data.map((t) => {
         return {
           id: t.payload.doc.id,
-          ...t.payload.doc.data() as Person
+          ...t.payload.doc.data() as ProfileImage
         };
       })
+    });
+    this.crudService.getPersons().subscribe((hello) => {
+      this.chatService.getMessages().subscribe((res) => {
+        this.messages = res.map((t) => {
+          return {
+            id: t.payload.doc.id,
+            ...t.payload.doc.data() as Message
+          };
+        })
+        this.ids = [];
+        this.messages.forEach(message => {
+          if (message.from == this.authService.uuid) this.ids.push(message.to);
+          if (message.to == this.authService.uuid) this.ids.push(message.from);
+        });
+        this.tempPersons = hello.map((t) => {
+          return {
+            id: t.payload.doc.id,
+            ...t.payload.doc.data() as Person
+          };
+        })
+        console.log(this.persons);
+        this.persons = [];
+        this.tempPersons.forEach(person => {
+          if (this.ids.includes(person.id)) this.persons.push(person);
+        });
+      });
+      
     });
   }
 
@@ -44,6 +85,12 @@ export class TestListPersonPage implements OnInit {
     .subscribe((data) => {
       console.log(data)
     })
+  }
+
+  test(){
+    console.log(this.ids);
+    console.log(this.persons);
+    console.log(this.messages);
   }
 
   remove(id) {

@@ -1,0 +1,92 @@
+<ion-content [fullscreen]="true">
+
+  <ion-toolbar color="lightblue">
+    <ion-buttons slot="start" *ngIf="preferences.type == 'offerer'">
+      <ion-back-button (click)="back()">hello</ion-back-button>
+    </ion-buttons>
+    <ion-row class="ion-padding-horizontal ion-padding-vertical">
+
+      <ion-col *ngIf="preferences.type == 'seeker'">
+        <ion-img src="assets/img/hm-btn.png" id="homemate-icon" [routerLink]="['/tabs/homepage']"></ion-img>
+      </ion-col>
+      
+      <ion-col>
+        <div class="ion-text-end">
+          <ion-icon name="person" size="large" color="darkblue" [routerLink]="['/tabs/profile']"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+
+  <ion-grid>
+    <ion-row center>
+      <ion-col size="12">
+
+        
+        <div id="card-fullscreen">
+          <ion-row class="ion-justify-content-center">
+            
+            <ion-col size="12" class="ion-text-center">
+              <ion-card>
+                
+                <ion-col>
+                  <ion-row class="ion-align-items-center ion-justify-content-center ion-padding-vertical">
+                    <ion-thumbnail>
+                      <img [src]="personImage.filepath"/>
+                    </ion-thumbnail>
+                  </ion-row>
+                    <div class="ion-text-center">
+                      <ion-text id="caps" class="big-text" color="darkblue" >{{person.firstname}} {{person.lastname}}</ion-text>
+                    </div>
+                </ion-col> 
+                
+                
+              
+                <ion-card-content class="ion-text-left">
+                  {{preferences.biography}}
+                </ion-card-content>
+                
+                <ion-card-header class="ion-text-left">Interests</ion-card-header>
+                <ion-card-content class="ion-text-left">
+                  <div *ngFor="let i of preferences.interests">{{i}}</div>
+                </ion-card-content>
+
+                <ion-card-header class="ion-text-left">Things you should know about me</ion-card-header>
+                <ion-card-content class="ion-text-left">
+                  <p *ngIf="preferences.instrument">I play an instrument</p>
+                  <p *ngIf="preferences.pet">I own a pet</p>
+                  <p *ngIf="preferences.smoker">I smoke</p>
+                  <p *ngIf="!preferences.instrument">I don't play an instrument</p>
+                  <p *ngIf="!preferences.pet">I don't own any pets</p>
+                  <p *ngIf="!preferences.smoker">I am not a smoker</p>
+                  
+                </ion-card-content>
+
+                <ion-card-header class="ion-text-left">These are the things I find important</ion-card-header>
+                <ion-card-content class="ion-text-left">
+                  <div *ngFor="let i of preferences.importentList">{{i}}</div>
+                </ion-card-content>
+
+                <ion-card-header class="ion-text-left">Preferences</ion-card-header>
+                <ion-card-content class="ion-text-left">
+                  <p *ngIf="preferences.isOkWithInstrument">I like someone playing an instrument</p>
+                  <p *ngIf="preferences.isOkWithPet">I like pets</p>
+                  <p *ngIf="preferences.isOkWithSmoker">I am ok with people smoking</p>
+                  <p *ngIf="!preferences.isOkWithInstrument">I don't like someone playing an instrument</p>
+                  <p *ngIf="!preferences.isOkWithPet">I don't like pets</p>
+                  <p *ngIf="!preferences.isOkWithSmoker">I am not ok with people smoking</p>
+                </ion-card-content>
+                
+              </ion-card>
+
+              
+            </ion-col>
+            
+          </ion-row>
+        </div>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
