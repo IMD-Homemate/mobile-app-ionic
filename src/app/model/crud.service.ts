@@ -13,6 +13,7 @@ export class Person {
     birthdate: string;
     gender: string;
     uuid: string;
+    score? : any;
 }
 
 @Injectable({

@@ -32,8 +32,8 @@
           <ion-row id="test">
             <ion-col size="12" class="ion-no-padding">
 
-              <ion-list *ngIf="preferences != [] && myPreferences.type == 'offerer'">
-                <div *ngFor="let person of persons">
+              <ion-list *ngIf="view && myPreferences.type == 'offerer'">
+                <div *ngFor="let person of sortedPersons">
                 <ion-item *ngIf="checkType(person)" lines="full" (click)="click(person.id)">
                   <ion-thumbnail item-start>
                     <div *ngFor="let image of images">
@@ -54,7 +54,7 @@
               </div>
               </ion-list>
 
-              <ion-list *ngIf="preferences != [] && myPreferences.type == 'seeker'">
+              <ion-list *ngIf="view && myPreferences.type == 'seeker'">
                 <div *ngFor="let residence of residences">
                 <ion-item lines="full" (click)="click(residence.id)">
                   <ion-thumbnail item-start>
@@ -65,14 +65,14 @@
                   <p class='description'>{{residence.description}}</p>
                   </ion-row>
                   
-                  <p>{{getScore(residence.uuid)*100}}%</p>
+                  <p>{{getScore(residence.id)*100}}%</p>
                   
                   <div item-end>
                     <ion-icon name="chevron-forward-outline" color="darkblue" (click)="click(residence.id)"></ion-icon>
                   </div>
                   
                 </ion-item>
-                <ion-progress-bar value="{{getScore(residence.uuid)}}"></ion-progress-bar>
+                <ion-progress-bar value="{{getScore(residence.id)}}"></ion-progress-bar>
               </div>
               </ion-list>
 

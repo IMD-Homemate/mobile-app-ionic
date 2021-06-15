@@ -13,6 +13,7 @@ export class Person {
   birthdate: string;
   gender: string;
   id: string;
+  score?: any;
 }
 
 @Component({
@@ -26,18 +27,22 @@ export class HomepagePage implements OnInit {
   images: ProfileImage[];
   url: any;
   persons: Person[];
+  sortedPersons: Person[];
   preferences: string[];
   tempPref: Preferences[];
   myPreferences: Preferences;
   residences: Residence[];
+  sortedResidences: Residence[];
   residenceImages : ProfileImage[];
   score : any;
+  view: boolean;
 
   constructor(private authService :AuthenticationService, private residenceService: ResidenceService,private pImageService : ProfileImageService, private personService: PersonService, private preferencesService: PreferencesService, private router: Router) { 
     this.preferences = this.images = this.persons = this.preferences = this.residences = this.residenceImages = [];
     this.myPreferences = new Preferences();
     this.myPreferences.importentList = [];
     this.myPreferences.interests = [];
+    this.view = false;
   }
 
   ngOnInit() {  
@@ -108,11 +113,29 @@ export class HomepagePage implements OnInit {
           pref.interests.forEach(item => {
             if (this.myPreferences.interests.includes(item)) amount++;
           });
+          if (amount > 10) amount = 10;
           this.score.push([pref.uuid, amount]);
+          
+          if(this.myPreferences.type.toString() == 'offerer') this.persons.find(p => p.id == pref.uuid).score = amount;
+          if(this.myPreferences.type.toString() == 'seeker') this.residences.find(r => r.id == pref.uuid).score = amount;
+          
         }
       });
-      console.log(this.score);
 
+      this.sortedPersons = this.persons.sort((p1, p2) => {
+        if (p1.score < p2.score) return 1;
+        if (p1.score > p2.score) return -1;
+        return 0;
+        
+      })
+
+      this.sortedResidences = this.residences.sort((r1, r2) => {
+        if (r1.score < r2.score) return 1;
+        if (r1.score > r2.score) return -1;
+        return 0;
+      })
+
+      this.view = true;
 
 
 
@@ -128,11 +151,11 @@ export class HomepagePage implements OnInit {
   getScore(id){
     let s;
     this.score.forEach(element => {
-      console.log(element)
       if (element[0] == id){
         s = element[1]/10;
       } 
     });
+    
     return s;
   }
 

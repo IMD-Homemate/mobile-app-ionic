@@ -12,6 +12,7 @@ export class Preferences {
     biography: string;
     date: string;
     uuid: string;
+    score?: any;
 }
 
 enum Type {
