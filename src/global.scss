@@ -189,6 +189,16 @@ ion-content{
 
 }
 
+#card-fullscreen2{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--ion-color-white);
+  border-radius: 25px;
+  box-shadow: 1px 6px 15px 5px var(--ion-color-grey);
+  height: 900px;
+}
+
 .btn-location{
   border-radius: 50px;
   box-shadow: 1px 6px 15px 0px var(--ion-color-grey);
@@ -260,3 +270,14 @@ ion-content{
   font-weight: bold;
 }
 
+// PERSON DETAIL PAGE
+.person-image{
+  object-fit: cover;
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+}
+
+.to-bottom3{
+  height: auto;
+}
