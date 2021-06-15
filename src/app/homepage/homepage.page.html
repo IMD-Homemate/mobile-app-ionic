@@ -41,11 +41,16 @@
                     </div>
                   </ion-thumbnail>
                   <p >{{person.firstname}} {{person.lastname}}</p>
-
+                  <p> {{getScore(person.uuid)*100}}%</p>
+                  
                   <div item-end>
                     <ion-icon name="chevron-forward-outline" (click)="click(person.id)" color="darkblue"></ion-icon>
                   </div>
+                  
                 </ion-item>
+                
+                <ion-progress-bar *ngIf="checkType(person)" value="{{getScore(person.uuid)}}"></ion-progress-bar>
+
               </div>
               </ion-list>
 
@@ -59,11 +64,15 @@
                   <p>{{residence.name}}</p>
                   <p class='description'>{{residence.description}}</p>
                   </ion-row>
-
+                  
+                  <p>{{getScore(residence.uuid)*100}}%</p>
+                  
                   <div item-end>
                     <ion-icon name="chevron-forward-outline" color="darkblue" (click)="click(residence.id)"></ion-icon>
                   </div>
+                  
                 </ion-item>
+                <ion-progress-bar value="{{getScore(residence.uuid)}}"></ion-progress-bar>
               </div>
               </ion-list>
 

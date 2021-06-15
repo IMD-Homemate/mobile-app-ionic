@@ -150,15 +150,7 @@ const routes: Routes = [
   {
     path: 'person-detailpage',
     loadChildren: () => import('./person-detailpage/person-detailpage.module').then( m => m.PersonDetailpagePageModule)
-  },
-  {
-    path: 'map',
-    loadChildren: () => import('./map/map.module').then( m => m.MapPageModule)
   }
-  // {
-  //   path: 'favo',
-  //   loadChildren: () => import('./favo/favo.module').then( m => m.FavoPageModule)
-  // }
 ];
 @NgModule({
   imports: [

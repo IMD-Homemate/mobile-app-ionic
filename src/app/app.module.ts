@@ -29,11 +29,9 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, },
-    AngularFirestoreModule, Geolocation,    
-    NativeGeocoder],
+    AngularFirestoreModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

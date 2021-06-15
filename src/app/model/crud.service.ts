@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
+import { ArgumentOutOfRangeError } from 'rxjs';
 import { Preferences } from '../shared/models/preferences.model';
 import { Residence } from '../shared/models/residence.model';
 import { AuthenticationService } from './authentication-service';
@@ -195,3 +196,6 @@ export class ResidenceService {
   }
 
 }
+
+
+
