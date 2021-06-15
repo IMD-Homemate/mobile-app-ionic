@@ -38,21 +38,29 @@
                 <div *ngFor="let person of sortedPersons">
                 <ion-item *ngIf="checkType(person)" lines="full" (click)="click(person.id)">
                   <ion-grid size="12">
-                    <!-- <ion-thumbnail item-start> -->
-                      <div *ngFor="let image of images">
-                        <img *ngIf="person.id == image.id" [src]="image.filepath" />
-                      </div>
-                    <!-- </ion-thumbnail> -->
-                    <p >{{person.firstname}} {{person.lastname}}</p>
-                    <p> {{getScore(person.uuid)*100}}%</p>
+                    <ion-row>
+                      <ion-col size="3" >
+                        <div *ngFor="let image of images">
+                          <img *ngIf="person.id == image.id" [src]="image.filepath" />
+                        </div>
+                      </ion-col>
+                      <ion-col size="6" class="ion-padding-horizontal">
+                        <p><ion-text color="darkblue" class="bold">{{getScore(person.uuid)*100}}% match</ion-text></p>
+                        <ion-progress-bar *ngIf="checkType(person)" value="{{getScore(person.uuid)}}"></ion-progress-bar>
+                      </ion-col>
+                      <ion-col>
+                        <ion-col size="1" class="ion-padding-top">
+                          <ion-icon name="chevron-forward-outline" size="medium" color="darkblue"(click)="click(person.id)"></ion-icon>
+                        </ion-col>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <p >{{person.firstname}} {{person.lastname}}</p>
+                    </ion-row>
 
-                    <div item-end>
-                      <ion-icon name="chevron-forward-outline" (click)="click(person.id)" color="darkblue"></ion-icon>
-                    </div>
                   </ion-grid>
                 </ion-item>
 
-                <ion-progress-bar *ngIf="checkType(person)" value="{{getScore(person.uuid)}}"></ion-progress-bar>
 
                 </div>
               </ion-list>
@@ -82,28 +90,9 @@
                     <ion-row>
                       <p>{{residence.name}}</p>
                       <p class='description'>{{residence.description}}</p>
-
                     </ion-row>
-                    <!-- <ion-row>
-                      <ion-progress-bar value="{{getScore(residence.id)}}"></ion-progress-bar>
-                   </ion-row> -->
-
-                    <!-- <ion-row>
-                      <p>{{residence.name}}</p>
-                      <p class='description'>{{residence.description}}</p>
-                    </ion-row> -->
-
-
-
-
-                    <!-- <div item-end>
-                      <ion-icon name="chevron-forward-outline" color="darkblue" (click)="click(residence.id)"></ion-icon>
-                    </div> -->
                   </ion-grid>
-
                 </ion-item>
-
-                <!-- <ion-progress-bar value="{{getScore(residence.id)}}"></ion-progress-bar> -->
                 </div>
               </ion-list>
 
