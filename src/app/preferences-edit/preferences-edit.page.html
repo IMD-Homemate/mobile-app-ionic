@@ -4,7 +4,7 @@
         <!-- Link naar rond deze icon, wat voor soort link? -->
         <!-- <ion-row class="ion-padding-horizontal ion-padding-vertical"> -->
             <!-- <ion-col> -->
-              <ion-icon name="chevron-back-outline" class="icon-back" size="large" color="darkblue" [routerLink]="['/profile']"></ion-icon>
+              <ion-icon name="chevron-back-outline" class="icon-back" size="large" color="darkblue" [routerLink]="['/tabs/profile']"></ion-icon>
             <!-- </ion-col> -->
         <!-- </ion-row> -->
   </ion-toolbar>
@@ -159,7 +159,7 @@
                   </ion-text>
 
                   <ion-item class="ion-padding-vertical" color="white border-txt" >
-                    <ion-textarea color="grey">{{preferences.biography}}</ion-textarea>
+                    <ion-textarea color="grey" [(ngModel)]="preferences.biography"></ion-textarea>
                   </ion-item>
                 
                 </div>
