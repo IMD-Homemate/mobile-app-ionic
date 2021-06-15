@@ -27,6 +27,7 @@ export class PreferencesEditPage implements OnInit {
   constructor(private router: Router, private personService: PersonService, private authService: AuthenticationService, private preferenceService: PreferencesService, private residenceService: ResidenceService) { 
     this.preferences = new Preferences();
     this.residence = new Residence();
+    this.person = new Person();
   }
 
   ngOnInit() {
