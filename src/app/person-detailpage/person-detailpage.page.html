@@ -2,14 +2,14 @@
 
   <ion-toolbar color="lightblue">
     <ion-buttons slot="start" *ngIf="preferences.type == 'offerer'">
-      <ion-back-button (click)="back()">hello</ion-back-button>
+      <ion-back-button color="darkblue" (click)="back()">hello</ion-back-button>
     </ion-buttons>
     <ion-row class="ion-padding-horizontal ion-padding-vertical">
 
       <ion-col *ngIf="preferences.type == 'seeker'">
         <ion-img src="assets/img/hm-btn.png" id="homemate-icon" [routerLink]="['/tabs/homepage']"></ion-img>
       </ion-col>
-      
+
       <ion-col>
         <div class="ion-text-end">
           <ion-icon name="person" size="large" color="darkblue" [routerLink]="['/tabs/profile']"></ion-icon>
@@ -21,70 +21,92 @@
   <ion-grid>
     <ion-row center>
       <ion-col size="12">
+        <ion-card-content class="bg-color ion-padding-vertical">
+          <ion-list id="test" class="to-bottom3">
 
-        
-        <div id="card-fullscreen">
-          <ion-row class="ion-justify-content-center">
-            
-            <ion-col size="12" class="ion-text-center">
-              <ion-card>
-                
+
+
+
+        <!-- <div id="card-fullscreen2"> -->
+          <!-- <ion-row class="ion-justify-content-center"> -->
+
+            <ion-col size="12" class="ion-text-center" >
+              <!-- <ion-card> -->
+
                 <ion-col>
                   <ion-row class="ion-align-items-center ion-justify-content-center ion-padding-vertical">
-                    <ion-thumbnail>
-                      <img [src]="personImage.filepath"/>
-                    </ion-thumbnail>
+                    <!-- <ion-thumbnail> -->
+                      <img class="person-image" [src]="personImage.filepath"/>
+                    <!-- </ion-thumbnail> -->
                   </ion-row>
                     <div class="ion-text-center">
                       <ion-text id="caps" class="big-text" color="darkblue" >{{person.firstname}} {{person.lastname}}</ion-text>
                     </div>
-                </ion-col> 
-                
-                
-              
+                </ion-col>
+
+
+
                 <ion-card-content class="ion-text-left">
-                  {{preferences.biography}}
-                </ion-card-content>
-                
-                <ion-card-header class="ion-text-left">Interests</ion-card-header>
-                <ion-card-content class="ion-text-left">
-                  <div *ngFor="let i of preferences.interests">{{i}}</div>
+                  <ion-text color="grey">
+                    <p>{{preferences.biography}}</p>
+                  </ion-text>
                 </ion-card-content>
 
-                <ion-card-header class="ion-text-left">Things you should know about me</ion-card-header>
+                <ion-card-header class="ion-text-left bold"><ion-text color="grey">Interests</ion-text></ion-card-header>
                 <ion-card-content class="ion-text-left">
+                  <div *ngFor="let i of preferences.interests"><p><ion-text color="grey">{{i}}</ion-text></p></div>
+                </ion-card-content>
+
+                <ion-card-header class="ion-text-left bold"><ion-text color="grey">Things you should know about me</ion-text></ion-card-header>
+                <ion-card-content class="ion-text-left">
+                  <ion-text color="grey">
                   <p *ngIf="preferences.instrument">I play an instrument</p>
                   <p *ngIf="preferences.pet">I own a pet</p>
                   <p *ngIf="preferences.smoker">I smoke</p>
                   <p *ngIf="!preferences.instrument">I don't play an instrument</p>
                   <p *ngIf="!preferences.pet">I don't own any pets</p>
                   <p *ngIf="!preferences.smoker">I am not a smoker</p>
-                  
+                  </ion-text>
+
                 </ion-card-content>
 
-                <ion-card-header class="ion-text-left">These are the things I find important</ion-card-header>
+
+
+                <ion-card-header class="ion-text-left bold"><ion-text color="grey">These are the things I find important</ion-text></ion-card-header>
                 <ion-card-content class="ion-text-left">
-                  <div *ngFor="let i of preferences.importentList">{{i}}</div>
+
+                    <div *ngFor="let i of preferences.importentList">
+                      <ion-text color="grey">
+                        <p>{{i}}</p>
+                      </ion-text>
+                    </div>
+
                 </ion-card-content>
 
-                <ion-card-header class="ion-text-left">Preferences</ion-card-header>
+                <ion-card-header class="ion-text-left bold"><ion-text color="grey">Preferences</ion-text></ion-card-header>
                 <ion-card-content class="ion-text-left">
+                  <ion-text color="grey">
                   <p *ngIf="preferences.isOkWithInstrument">I like someone playing an instrument</p>
                   <p *ngIf="preferences.isOkWithPet">I like pets</p>
                   <p *ngIf="preferences.isOkWithSmoker">I am ok with people smoking</p>
                   <p *ngIf="!preferences.isOkWithInstrument">I don't like someone playing an instrument</p>
                   <p *ngIf="!preferences.isOkWithPet">I don't like pets</p>
                   <p *ngIf="!preferences.isOkWithSmoker">I am not ok with people smoking</p>
+                  </ion-text>
                 </ion-card-content>
-                
-              </ion-card>
 
-              
+
+
+              <!-- </ion-card> -->
+
+
             </ion-col>
-            
-          </ion-row>
-        </div>
 
+          <!-- </ion-row> -->
+        <!-- </div> -->
+
+        </ion-list>
+        </ion-card-content>
       </ion-col>
     </ion-row>
   </ion-grid>
