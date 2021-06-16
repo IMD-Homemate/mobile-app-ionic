@@ -17,9 +17,12 @@
 
   <ion-grid>
     <ion-row center>
-      <ion-col size="12">
 
-        <div id="card-fullscreen">
+      <ion-col size="12">
+        <ion-card class="bg-color">
+        <ion-list id="test" class="to-bottom3">
+
+        <!-- <div id="card-fullscreen"> -->
           <ion-row class="ion-justify-content-center">
 
             <ion-col size="10" class="ion-text-left">
@@ -30,11 +33,11 @@
             </ion-col>
           </ion-row>
 
-          <ion-row id="test">
+          <ion-row id="test" class="to-bottom3">
             <ion-col class="ion-no-padding">
               <ion-grid size="12">
 
-              <ion-list *ngIf="view && myPreferences.type == 'offerer'">
+              <ion-list *ngIf="view && myPreferences.type == 'offerer'" class="to-bottom3">
                 <div *ngFor="let person of sortedPersons">
                 <ion-item *ngIf="checkType(person)" lines="full" (click)="click(person.id)">
                   <ion-grid size="12">
@@ -66,7 +69,7 @@
               </ion-list>
 
 
-              <ion-list *ngIf="view && myPreferences.type == 'seeker'">
+              <ion-list *ngIf="view && myPreferences.type == 'seeker'" class="to-bottom3">
                 <div *ngFor="let residence of residences">
                 <ion-item lines="full" (click)="click(residence.id)">
                   <ion-grid size="12">
@@ -103,7 +106,9 @@
               </ion-grid>
             </ion-col>
           </ion-row>
-        </div>
+        <!-- </div> -->
+      </ion-list>
+    </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
