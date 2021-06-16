@@ -42,14 +42,22 @@
                 <ion-item *ngIf="checkType(person)" lines="full" (click)="click(person.id)">
                   <ion-grid size="12">
                     <ion-row>
-                      <ion-col size="3" >
+                      <ion-col size="2" >
                         <div *ngFor="let image of images">
                           <img *ngIf="person.id == image.id" [src]="image.filepath" />
                         </div>
                       </ion-col>
-                      <ion-col size="6" class="ion-padding-horizontal">
-                        <p><ion-text color="darkblue" class="bold">{{getScore(person.uuid)*100}}% match</ion-text></p>
+                      <ion-col size="8" class="ion-padding-horizontal">
+                        <ion-row>
+                          <ion-col size="8">
+                            <p>{{person.firstname}} {{person.lastname}}</p>
+                          </ion-col>
+                          <ion-col class="ion-text-right" size="3">
+                            <p><ion-text  color="darkblue" class="bold">{{getScore(person.uuid)*100}}%</ion-text></p>
+                          </ion-col>
+                        </ion-row>
                         <ion-progress-bar *ngIf="checkType(person)" value="{{getScore(person.uuid)}}"></ion-progress-bar>
+                        
                       </ion-col>
                       <ion-col>
                         <ion-col size="1" class="ion-padding-top">
@@ -57,9 +65,7 @@
                         </ion-col>
                       </ion-col>
                     </ion-row>
-                    <ion-row>
-                      <p >{{person.firstname}} {{person.lastname}}</p>
-                    </ion-row>
+                    
 
                   </ion-grid>
                 </ion-item>
@@ -74,26 +80,36 @@
                 <ion-item lines="full" (click)="click(residence.id)">
                   <ion-grid size="12">
                     <ion-row>
-                      <ion-col size="5">
+                      <ion-col size="2">
                         <div>
                           <img [src]="getFirstResidenceImage(residence.id)" />
                         </div>
                       </ion-col>
-                      <ion-col size="6">
-                        <ion-row>
-                          <p><ion-text color="darkblue" class="bold">{{getScore(residence.id)*100}}% match</ion-text></p>
-                          <ion-progress-bar value="{{getScore(residence.id)}}"></ion-progress-bar>
+                      <ion-col size="8">
+                     
 
-                        </ion-row>
+
+                          <ion-row>
+                            <ion-col size="8">
+                              <p>{{residence.name}}</p>
+                              <p class='description'>{{residence.description.substring(0,25)}}...</p>
+                            </ion-col>
+                            <ion-col class="ion-text-right" size="3">
+                              <p><ion-text color="darkblue" class="bold">{{getScore(residence.id)*100}}%</ion-text></p>
+                            </ion-col>
+                          </ion-row>
+
+
+                          
+
+
+                        <ion-progress-bar value="{{getScore(residence.id)}}"></ion-progress-bar>
                       </ion-col>
                       <ion-col size="1" class="ion-padding-top">
                         <ion-icon name="chevron-forward-outline" size="large" color="darkblue" (click)="click(residence.id)"></ion-icon>
                       </ion-col>
                     </ion-row>
-                    <ion-row>
-                      <p>{{residence.name}}</p>
-                      <p class='description'>{{residence.description}}</p>
-                    </ion-row>
+                    
                   </ion-grid>
                 </ion-item>
                 </div>

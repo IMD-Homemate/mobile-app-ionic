@@ -61,7 +61,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tabs/homepage',
+    redirectTo: '/login',
     pathMatch: 'full'
   }
 ];

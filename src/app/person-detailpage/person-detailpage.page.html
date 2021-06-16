@@ -43,6 +43,9 @@
                       <ion-text id="caps" class="big-text" color="darkblue" >{{person.firstname}} {{person.lastname}}</ion-text>
                     </div>
                 </ion-col>
+                <div item-end (click)="next(person.uuid)">
+                  <ion-icon class="message" name="mail"  color="darkblue"></ion-icon>
+                </div>
 
 
 
